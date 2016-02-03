@@ -1,0 +1,5 @@
+spring:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    serialization:
+      indent_output: true
