@@ -60,14 +60,14 @@ public class BooksApiTests {
     @Test
     public void postResource() {
         BookResource resource = new BookResource();
-        resource.setName("Spring徹底入門");
+        resource.setName("Spring入門");
         resource.setPublishedDate(LocalDate.of(2016, 4, 1));
 
         URI createdResourceUri = restOperations.postForLocation(
                 bookResourceUrl, resource);
 
         BookResource createdResource = restOperations.getForObject(createdResourceUri, BookResource.class);
-        assertThat(createdResource.getName(), is("Spring徹底入門"));
+        assertThat(createdResource.getName(), is("Spring入門"));
         assertThat(createdResource.getPublishedDate(), is(LocalDate.of(2016, 4, 1)));
 
     }
@@ -75,7 +75,7 @@ public class BooksApiTests {
     @Test
     public void putResource() {
         BookResource resource = new BookResource();
-        resource.setName("Spring徹底入門");
+        resource.setName("Spring入門");
         resource.setPublishedDate(LocalDate.of(2016, 4, 1));
 
         URI createdResourceUri = restOperations.postForLocation(
@@ -90,7 +90,7 @@ public class BooksApiTests {
 
         assertThat(updatedEntity.getStatusCode(), is(HttpStatus.NO_CONTENT));
         BookResource updatedResource = restOperations.getForObject(createdResourceUri, BookResource.class);
-        assertThat(updatedResource.getName(), is("Spring徹底入門(Spring 4.2対応)"));
+        assertThat(updatedResource.getName(), is("Spring入門(Spring 4.2対応)"));
         assertThat(updatedResource.getPublishedDate(), is(LocalDate.of(2016, 3, 20)));
 
     }
@@ -98,7 +98,7 @@ public class BooksApiTests {
     @Test
     public void deleteResource() {
         BookResource resource = new BookResource();
-        resource.setName("Spring徹底入門");
+        resource.setName("Spring入門");
         resource.setPublishedDate(LocalDate.of(2016, 4, 1));
 
         URI createdResourceUri = restOperations.postForLocation(
@@ -125,7 +125,7 @@ public class BooksApiTests {
 
         {
             BookResource resource = new BookResource();
-            resource.setName("Spring徹底入門 2 (Spring 5対応)");
+            resource.setName("Spring入門 2 (Spring 5対応)");
             resource.setPublishedDate(LocalDate.of(2017, 4, 1));
             try {
                 restOperations.postForLocation(bookResourceUrl, resource);
@@ -137,7 +137,7 @@ public class BooksApiTests {
 
         {
             BookResource resource = new BookResource();
-            resource.setName("Spring徹底入門");
+            resource.setName("Spring入門");
             resource.setPublishedDate(LocalDate.of(2016, 4, 1));
             restOperations.postForLocation(bookResourceUrl, resource);
         }
@@ -156,12 +156,12 @@ public class BooksApiTests {
             }
             {
                 BookResource resource = resources.get(1);
-                assertThat(resource.getName(), is("Spring徹底入門"));
+                assertThat(resource.getName(), is("Spring入門"));
                 assertThat(resource.getPublishedDate(), is(LocalDate.of(2016, 4, 1)));
             }
             {
                 BookResource resource = resources.get(2);
-                assertThat(resource.getName(), is("Spring徹底入門 2 (Spring 5対応)"));
+                assertThat(resource.getName(), is("Spring入門 2 (Spring 5対応)"));
                 assertThat(resource.getPublishedDate(), is(LocalDate.of(2017, 4, 1)));
             }
         }

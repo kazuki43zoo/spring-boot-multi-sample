@@ -3,3 +3,13 @@ spring:
     date-format: com.fasterxml.jackson.databind.util.StdDateFormat
     serialization:
       indent_output: true
+api:
+  error:
+    documentation-url: http://example.com/api/errors
+    message-mappings:
+      ? org.springframework.http.converter.HttpMessageNotReadableException
+      : Request body is invalid
+      ? org.springframework.web.bind.MethodArgumentNotValidException
+      : Request value is invalid
+      ? org.springframework.validation.BindException
+      : Request value is invalid
