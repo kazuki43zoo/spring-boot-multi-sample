@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>sample-screen-jsp</artifactId>
+    <packaging>war</packaging>
+    <name>Spring Boot Multi Sample Project - Application Layer Components for Screen with JSP -</name>
+
+    <parent>
+        <groupId>com.github.kazuki43zoo</groupId>
+        <artifactId>spring-boot-multi-sample</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <tomcat.embed.scope>compile</tomcat.embed.scope>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>${tomcat.embed.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>${tomcat.embed.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kazuki43zoo</groupId>
+            <artifactId>sample-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>executable</id>
+            <activation>
+                <!-- Linux   : $ export MAVEN_OPTS=executable=true -->
+                <!-- Windows : > set MAVEN_OPTS=executable=true -->
+                <property>
+                    <name>executable</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <tomcat.embed.scope>provided</tomcat.embed.scope>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+           </plugin>
+        </plugins>
+    </build>
+
+</project>
+

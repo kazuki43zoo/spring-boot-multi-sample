@@ -39,6 +39,7 @@
         <module>sample-component</module>
         <module>sample-domain</module>
         <module>sample-api</module>
+        <module>sample-screen-jsp</module>
     </modules>
 
 </project>

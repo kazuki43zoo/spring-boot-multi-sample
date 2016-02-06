@@ -28,7 +28,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = SampleApplication.class)
+@SpringApplicationConfiguration(classes = ApiApplication.class)
 @WebIntegrationTest(randomPort = true)
 public class BooksApiTests {
 
