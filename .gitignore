@@ -1,9 +1,13 @@
 # Created by .ignore support plugin (hsz.mobi)
 
+# For IntelliJ IDEA
 .idea
 *.iml
 target
 
+# For Spring Tool Suite(Eclipse)
 .project
 .classpath
 .settings
+.apt_generated
+.factorypath
