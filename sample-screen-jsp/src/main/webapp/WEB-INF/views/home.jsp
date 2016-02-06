@@ -4,7 +4,7 @@
 <html>
 
 <body>
-<spring:message code="welcome" text="Welcome !!"/>
+<spring:message code="screen.welcome" text="Welcome !!"/>
 </body>
 
 </html>
