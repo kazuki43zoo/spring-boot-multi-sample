@@ -4,7 +4,7 @@
 
     <artifactId>sample-component</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Multi Sample Project - General Components -</name>
+    <name>Spring Boot Multi Project Samples - General Components -</name>
 
     <parent>
         <groupId>com.github.kazuki43zoo</groupId>

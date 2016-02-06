@@ -6,7 +6,7 @@
     <artifactId>spring-boot-multi-sample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Spring Boot Multi Sample Project</name>
+    <name>Spring Boot Multi Project Samples</name>
 
     <properties>
         <java.version>1.8</java.version>

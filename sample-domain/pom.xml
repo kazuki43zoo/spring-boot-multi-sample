@@ -4,7 +4,7 @@
 
     <artifactId>sample-domain</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Multi Sample Project - Domain Layer Components -</name>
+    <name>Spring Boot Multi Project Samples - Domain Layer Components -</name>
 
     <parent>
         <groupId>com.github.kazuki43zoo</groupId>

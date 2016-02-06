@@ -4,7 +4,7 @@
 
     <artifactId>sample-api</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Multi Sample Project - Application Layer Components for REST API -</name>
+    <name>Spring Boot Multi Project Samples - Application Layer Components for REST API -</name>
 
     <parent>
         <groupId>com.github.kazuki43zoo</groupId>

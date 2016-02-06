@@ -4,7 +4,7 @@
 
     <artifactId>sample-screen-jsp</artifactId>
     <packaging>war</packaging>
-    <name>Spring Boot Multi Sample Project - Application Layer Components for Screen with JSP -</name>
+    <name>Spring Boot Multi Project Samples - Application Layer Components for Screen with JSP -</name>
 
     <parent>
         <groupId>com.github.kazuki43zoo</groupId>
