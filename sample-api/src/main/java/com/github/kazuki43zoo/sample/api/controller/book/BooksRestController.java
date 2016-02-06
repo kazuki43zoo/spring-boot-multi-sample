@@ -3,7 +3,6 @@ package com.github.kazuki43zoo.sample.api.controller.book;
 
 import com.github.kazuki43zoo.sample.domain.model.Book;
 import com.github.kazuki43zoo.sample.domain.repository.BookCriteria;
-import com.github.kazuki43zoo.sample.domain.service.BookNotFoundException;
 import com.github.kazuki43zoo.sample.domain.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -81,7 +80,6 @@ public class BooksRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<BookResource> searchBooks(@Validated BookResourceQuery query) {
-
         BookCriteria criteria = new BookCriteria();
         criteria.setName(query.getName());
         criteria.setPublishedDate(query.getPublishedDate());
