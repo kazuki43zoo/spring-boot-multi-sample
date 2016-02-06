@@ -29,6 +29,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
+                <artifactId>sample-component-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.kazuki43zoo</groupId>
                 <artifactId>sample-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -76,6 +81,7 @@
 
     <modules>
         <module>sample-component</module>
+        <module>sample-component-web</module>
         <module>sample-domain</module>
         <module>sample-api</module>
         <module>sample-screen-jsp</module>

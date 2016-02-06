@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ScreenApplication.class)
+@SpringApplicationConfiguration(classes = ThymeleafApplication.class)
 @WebIntegrationTest(randomPort = true)
 public class HomeTests {
 

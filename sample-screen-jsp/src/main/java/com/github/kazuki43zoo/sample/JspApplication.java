@@ -1,26 +1,21 @@
 package com.github.kazuki43zoo.sample;
 
-import org.apache.tomcat.util.descriptor.web.JspPropertyGroup;
-import org.apache.tomcat.util.descriptor.web.JspPropertyGroupDescriptorImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
-import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import java.io.File;
 
 @ServletComponentScan
 @SpringBootApplication
-public class ScreenApplication {
+public class JspApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ScreenApplication.class, args);
+        SpringApplication.run(JspApplication.class, args);
     }
 
     // TODO: This solutions is workaround for execution at working directory of multi project root.
