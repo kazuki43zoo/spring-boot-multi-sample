@@ -17,7 +17,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ThymeleafApplication.class)
+@SpringApplicationConfiguration(classes = FreeMarkerApplication.class)
 @WebIntegrationTest(randomPort = true)
 public class HomeTests {
 
@@ -29,7 +29,7 @@ public class HomeTests {
     	try(WebClient webClient = new WebClient(BrowserVersion.FIREFOX_38)){
             HtmlPage page = webClient.getPage(new URL(documentRootUrl));
 
-            assertThat(page.asText(), is("Hello Thymeleaf!!"));
+            assertThat(page.asText(), is("Hello FreeMarker!!"));
         }
     }
 

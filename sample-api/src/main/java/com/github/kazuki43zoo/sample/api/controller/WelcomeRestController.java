@@ -12,7 +12,7 @@ public class WelcomeRestController {
 
     @RequestMapping("/")
     public Map<String, Object> hello() {
-        return Collections.singletonMap("message", "Hello!!" + new Date());
+        return Collections.singletonMap("message", "Hello API!!");
     }
 
 }

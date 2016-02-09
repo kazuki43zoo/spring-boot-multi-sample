@@ -86,6 +86,7 @@
         <module>sample-api</module>
         <module>sample-screen-jsp</module>
         <module>sample-screen-thymeleaf</module>
+        <module>sample-screen-freemarker</module>
     </modules>
 
 </project>
