@@ -1,9 +1,11 @@
 server:
   port: 8081
+  error:
+    whitelabel:
+      enabled: false # disable default error view
 
 spring:
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-
