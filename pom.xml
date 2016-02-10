@@ -37,6 +37,11 @@
                 <artifactId>sample-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.kazuki43zoo</groupId>
+                <artifactId>sample-screen</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -84,6 +89,7 @@
         <module>sample-component-web</module>
         <module>sample-domain</module>
         <module>sample-api</module>
+        <module>sample-screen</module>
         <module>sample-screen-jsp</module>
         <module>sample-screen-thymeleaf</module>
         <module>sample-screen-freemarker</module>

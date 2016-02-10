@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sample-screen-thymeleaf</artifactId>
+    <artifactId>sample-screen</artifactId>
     <packaging>jar</packaging>
-    <name>Spring Boot Multi Project Samples - Application Layer Components for Screen with Thymeleaf -</name>
+    <name>Spring Boot Multi Project Samples - Application Layer Components for Screen -</name>
 
     <parent>
         <groupId>com.github.kazuki43zoo</groupId>
@@ -16,20 +16,19 @@
     <dependencies>
         <dependency>
             <groupId>com.github.kazuki43zoo</groupId>
-            <artifactId>sample-screen</artifactId>
+            <artifactId>sample-component-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kazuki43zoo</groupId>
+            <artifactId>sample-domain</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -38,15 +37,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-           </plugin>
-        </plugins>
-    </build>
 
 </project>
 
