@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+<#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
 <#escape x as x?html>
 
 <!DOCTYPE html>
@@ -17,6 +18,20 @@
 <hr/>
 
 <a href="<@spring.url '/todos'/>">Todo List</a>
+
+<hr/>
+
+    <@sec.authorize access="isAuthenticated()" var="isAuthenticated" />
+    <#switch isAuthenticated>
+        <#case true>
+            <form action="<@spring.url '/logout'/>" method="post" style="display: inline-block;">
+                <button>Logout</button>
+                <@sec.csrfInput />
+            </form>
+            <#break />
+        <#default>
+            <a href="<@spring.url '/login'/>">Login</a>
+    </#switch>
 
 </body>
 

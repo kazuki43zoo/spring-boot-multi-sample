@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+<#assign sec=JspTaglibs["http://www.springframework.org/security/tags"] />
 <#escape x as x?html>
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
         <@spring.formInput 'todoForm.todoTitle'/>
         <@spring.showErrors 'br', 'text-error'/>
         <button>Create Todo</button>
+        <@sec.csrfInput />
     </form>
 </div>
 
@@ -40,10 +42,12 @@
                             <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post"
                                   style="display: inline-block;">
                                 <button name="finish">Finish</button>
+                                <@sec.csrfInput />
                             </form>
                     </#switch>
                     <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post" style="display: inline-block;">
                         <button name="delete">Delete</button>
+                        <@sec.csrfInput />
                     </form>
                 </li>
             </#list>
@@ -55,6 +59,19 @@
 <hr/>
 
 <a href="<@spring.url '/'/>">Home</a>
+
+    <@sec.authorize access="isAuthenticated()" var="isAuthenticated" />
+    <#switch isAuthenticated>
+        <#case true>
+        <form action="<@spring.url '/logout'/>" method="post" style="display: inline-block;">
+            <button>Logout</button>
+            <@sec.csrfInput />
+        </form>
+            <#break />
+        <#default>
+        <a href="<@spring.url '/login'/>">Login</a>
+    </#switch>
+
 </body>
 
 </html>

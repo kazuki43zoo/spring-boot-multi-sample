@@ -1,4 +1,5 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -51,5 +52,18 @@
 <hr/>
 
 <a href="<c:url value='/'/>">Home</a>
+<sec:authorize access="isAuthenticated()" var="isAuthenticated"/>
+<c:choose>
+    <c:when test="${isAuthenticated}">
+        <c:url value="/logout" var="logoutUrl"/>
+        <form:form action="${logoutUrl}" cssStyle="display: inline-block;">
+            <button>Logout</button>
+        </form:form>
+    </c:when>
+    <c:otherwise>
+        <a href="<c:url value='/login'/>">Login</a>
+    </c:otherwise>
+</c:choose>
+
 </body>
 </html>

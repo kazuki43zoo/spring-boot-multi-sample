@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Todo List</title>
@@ -39,5 +41,10 @@
 <hr/>
 
 <a href="../home.html" th:href="@{/}">Home</a>
+<form method="post" style="display: inline-block;"
+      th:action="@{/logout}" sec:authorize="isAuthenticated()">
+    <button>Logout</button>
+</form>
+<a th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
 </body>
 </html>
