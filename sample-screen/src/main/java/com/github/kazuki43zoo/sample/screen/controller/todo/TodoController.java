@@ -4,6 +4,8 @@ import com.github.kazuki43zoo.sample.domain.model.Todo;
 import com.github.kazuki43zoo.sample.domain.service.TodoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @RequestMapping("/todos")
 @Controller
@@ -37,7 +40,7 @@ public class TodoController {
 
 
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@Validated TodoForm todoForm, BindingResult bindingResult, Model model) {
+    public String create(@Validated TodoForm todoForm, BindingResult bindingResult, Model model, @AuthenticationPrincipal UserDetails userDetails) {
 
         if (bindingResult.hasErrors()) {
             return list(model);
@@ -46,7 +49,7 @@ public class TodoController {
         Todo todo = new Todo();
         BeanUtils.copyProperties(todoForm, todo);
 
-        todoService.create(todo, "screen");
+        todoService.create(todo, Optional.ofNullable(userDetails).map(x -> x.getUsername()).orElse("screen"));
 
         return "redirect:/todos";
     }
