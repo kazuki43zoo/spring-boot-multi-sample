@@ -4,3 +4,8 @@ server:
 spring:
   freemarker:
     cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true

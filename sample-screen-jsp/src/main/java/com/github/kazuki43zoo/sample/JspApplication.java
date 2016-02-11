@@ -5,8 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 
 import java.io.File;
 
@@ -34,6 +36,11 @@ public class JspApplication {
             }
         }
 
+    }
+
+    @Bean
+    ResourceUrlEncodingFilter resourceUrlEncodingFilter(){
+        return new ResourceUrlEncodingFilter();
     }
 
 }

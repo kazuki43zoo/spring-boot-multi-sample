@@ -4,3 +4,8 @@ server:
 spring:
   thymeleaf:
     cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true

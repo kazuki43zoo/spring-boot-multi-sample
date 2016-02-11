@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="../../../../../../sample-screen/src/main/resources/public/styles.css" type="text/css"
+          th:href="@{/styles.css}"/>
+</head>
+<body>
+
+<h1>Todo List</h1>
+
+<div id="todoForm">
+    <form action="list.html" method="post"
+          th:action="@{/todos}" th:object="${todoForm}">
+        <input type="text" th:field="*{todoTitle}"/>
+        <span class="text-error" th:errors="*{todoTitle}"></span>
+        <button>Create Todo</button>
+    </form>
+</div>
+
+<div id="todoList" th:if="${not #lists.isEmpty(todos)}">
+    <hr/>
+    <ul>
+        <li th:each="todo : ${todos}">
+            <span th:text="${todo.todoTitle}" th:class="${todo.finished} ? 'strike'">Create Sample Application</span>
+            <form action="list.html" method="post" style="display: inline-block;"
+                  th:action="@{/todos/{todoId}(todoId=${todo.todoId})}" th:if="${not todo.finished}">
+                <button name="finish">Finish</button>
+            </form>
+            <form action="list.html" method="post" style="display: inline-block;"
+                  th:action="@{/todos/{todoId}(todoId=${todo.todoId})}">
+                <button name="delete">Delete</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+<hr/>
+
+<a href="../home.html" th:href="@{/}">Home</a>
+</body>
+</html>

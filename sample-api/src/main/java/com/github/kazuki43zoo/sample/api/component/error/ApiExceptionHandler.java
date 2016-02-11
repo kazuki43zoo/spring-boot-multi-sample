@@ -1,6 +1,6 @@
 package com.github.kazuki43zoo.sample.api.component.error;
 
-import com.github.kazuki43zoo.sample.domain.service.BookNotFoundException;
+import com.github.kazuki43zoo.sample.domain.service.TodoNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +47,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Object> handleBookNotFoundException(
-            BookNotFoundException ex, WebRequest request) {
+    public ResponseEntity<Object> handleTodoNotFoundException(
+            TodoNotFoundException ex, WebRequest request) {
         return handleExceptionInternal(ex, null, null, HttpStatus.NOT_FOUND, request);
     }
 

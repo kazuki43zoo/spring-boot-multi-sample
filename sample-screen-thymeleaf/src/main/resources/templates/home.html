@@ -2,8 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="../../../../../sample-screen/src/main/resources/public/styles.css" type="text/css"
+          th:href="@{/styles.css}"/>
+</head>
+
 <body>
-<span th:text="#{screen.welcome}">Welcome!!</span>
+<span id="message" th:text="#{screen.welcome}">Welcome!!</span>
 </body>
 
+<hr/>
+
+<a href="todo/list.html" th:href="@{/todos}">Todo List</a>
 </html>
