@@ -2,6 +2,8 @@ server:
   port: 8082
 
 spring:
+  profiles:
+    include: default,mybatis
   thymeleaf:
     cache: false
   resources:
@@ -9,3 +11,7 @@ spring:
       strategy:
         content:
           enabled: true
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG

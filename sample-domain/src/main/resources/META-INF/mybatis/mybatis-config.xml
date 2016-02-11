@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- See http://mybatis.github.io/mybatis-3/configuration.html#settings -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="defaultFetchSize" value="100"/>
+    </settings>
+
+    <typeAliases>
+        <package name="com.github.kazuki43zoo.sample.domain.model"/>
+        <package name="com.github.kazuki43zoo.sample.domain.repository"/>
+    </typeAliases>
+
+    <typeHandlers>
+        <package name="com.github.kazuki43zoo.sample.infra.mybatis.typehandler"/>
+    </typeHandlers>
+
+</configuration>

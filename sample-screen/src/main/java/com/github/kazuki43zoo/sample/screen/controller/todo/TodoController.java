@@ -46,7 +46,7 @@ public class TodoController {
         Todo todo = new Todo();
         BeanUtils.copyProperties(todoForm, todo);
 
-        todoService.create(todo);
+        todoService.create(todo, "screen");
 
         return "redirect:/todos";
     }

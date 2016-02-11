@@ -1,5 +1,6 @@
 package com.github.kazuki43zoo.sample;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -14,6 +15,7 @@ import java.io.File;
 
 @ServletComponentScan
 @SpringBootApplication
+//@MapperScan(basePackages = "com.github.kazuki43zoo.sample.domain.repository")
 public class JspApplication {
 
     public static void main(String[] args) {

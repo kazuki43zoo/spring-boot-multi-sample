@@ -44,7 +44,7 @@ public class TodosRestController {
         Todo newTodo = new Todo();
         BeanUtils.copyProperties(newResource, newTodo);
 
-        Todo createdTodo = todoService.create(newTodo);
+        Todo createdTodo = todoService.create(newTodo, "api");
 
         URI resourceUri = relativeTo(uriBuilder)
                 .withMethodCall(on(TodosRestController.class).getTodo(createdTodo.getTodoId()))

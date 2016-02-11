@@ -5,6 +5,8 @@ server:
       enabled: false # disable default error view
 
 spring:
+  profiles:
+    include: default,mybatis
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -14,3 +16,7 @@ spring:
       strategy:
         content:
           enabled: true
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG

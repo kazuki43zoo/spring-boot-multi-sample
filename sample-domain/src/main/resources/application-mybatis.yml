@@ -1,0 +1,6 @@
+logging:
+  level:
+    org.mybatis: DEBUG
+
+mybatis:
+  config: classpath:META-INF/mybatis/mybatis-config.xml

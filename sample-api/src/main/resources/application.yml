@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    include: default,mybatis
   jackson:
     date-format: com.fasterxml.jackson.databind.util.StdDateFormat
     serialization:
@@ -16,3 +18,7 @@ api:
       : Request value is invalid
       ? org.springframework.validation.BindException
       : Request value is invalid
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG

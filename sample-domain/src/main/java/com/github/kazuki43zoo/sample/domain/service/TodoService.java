@@ -5,6 +5,7 @@ import com.github.kazuki43zoo.sample.domain.repository.TodoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.IdGenerator;
 import org.springframework.util.JdkIdGenerator;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Service
+@Transactional
 public class TodoService {
 
     @Autowired
@@ -36,12 +38,13 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public Todo create(Todo todo) {
+    public Todo create(Todo todo, String username) {
 
         String todoId = idGenerator.generateId().toString();
         LocalDateTime createdAt = LocalDateTime.now(clock);
 
         todo.setTodoId(todoId);
+        todo.setUsername(username);
         todo.setCreatedAt(createdAt);
         todo.setFinished(false);
 
@@ -68,4 +71,5 @@ public class TodoService {
         Todo todo = findOne(todoId);
         todoRepository.delete(todo);
     }
+
 }

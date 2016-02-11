@@ -1,6 +1,7 @@
 package com.github.kazuki43zoo.sample.api.controller.todo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -11,6 +12,9 @@ public class TodoResource implements Serializable {
     private String todoId;
 
     private String todoTitle;
+
+    private LocalDate deadlineDate;
+
 
     private boolean finished;
 
@@ -30,6 +34,14 @@ public class TodoResource implements Serializable {
 
     public void setTodoTitle(String todoTitle) {
         this.todoTitle = todoTitle;
+    }
+
+    public LocalDate getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public void setDeadlineDate(LocalDate deadlineDate) {
+        this.deadlineDate = deadlineDate;
     }
 
     public boolean isFinished() {
