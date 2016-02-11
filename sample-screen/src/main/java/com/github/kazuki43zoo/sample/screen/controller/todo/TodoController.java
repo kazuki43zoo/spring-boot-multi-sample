@@ -32,8 +32,8 @@ public class TodoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String list(Model model) {
-        Collection<Todo> todos = todoService.findAll();
+    public String list(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        Collection<Todo> todos = todoService.findAll(extractUsername(userDetails));
         model.addAttribute("todos", todos);
         return "todo/list";
     }
@@ -43,13 +43,13 @@ public class TodoController {
     public String create(@Validated TodoForm todoForm, BindingResult bindingResult, Model model, @AuthenticationPrincipal UserDetails userDetails) {
 
         if (bindingResult.hasErrors()) {
-            return list(model);
+            return list(model, userDetails);
         }
 
         Todo todo = new Todo();
         BeanUtils.copyProperties(todoForm, todo);
 
-        todoService.create(todo, Optional.ofNullable(userDetails).map(x -> x.getUsername()).orElse("screen"));
+        todoService.create(todo, extractUsername(userDetails));
 
         return "redirect:/todos";
     }
@@ -70,4 +70,8 @@ public class TodoController {
         return "redirect:/todos";
     }
 
+
+    private String extractUsername(UserDetails userDetails) {
+        return Optional.ofNullable(userDetails).map(x -> x.getUsername()).orElse("anonymous");
+    }
 }

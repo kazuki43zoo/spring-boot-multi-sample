@@ -44,7 +44,7 @@ public class TodosRestController {
         Todo newTodo = new Todo();
         BeanUtils.copyProperties(newResource, newTodo);
 
-        Todo createdTodo = todoService.create(newTodo, "api");
+        Todo createdTodo = todoService.create(newTodo, "anonymous");
 
         URI resourceUri = relativeTo(uriBuilder)
                 .withMethodCall(on(TodosRestController.class).getTodo(createdTodo.getTodoId()))
@@ -76,7 +76,7 @@ public class TodosRestController {
     public List<TodoResource> searchTodos() {
 
         List<TodoResource> resources = new ArrayList<>();
-        todoService.findAll().forEach(todo -> {
+        todoService.findAll("anonymous").forEach(todo -> {
             TodoResource resource = new TodoResource();
             BeanUtils.copyProperties(todo, resource);
             resources.add(resource);
@@ -88,7 +88,7 @@ public class TodosRestController {
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBooks() {
-        todoService.findAll()
+        todoService.findAll("anonymous")
                 .forEach(todo -> todoService.delete(todo.getTodoId()));
     }
 

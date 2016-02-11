@@ -35,6 +35,8 @@
             created_at
         FROM
             todo
+        WHERE
+            username = #{usename}
     ]]>
     </select>
 

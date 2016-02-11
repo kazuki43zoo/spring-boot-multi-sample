@@ -11,7 +11,7 @@ public interface TodoRepository {
             "or (returnObject.username == principal.username)")
     Todo findOne(String todoId);
 
-    Collection<Todo> findAll();
+    Collection<Todo> findAll(String usename);
 
     void create(Todo todo);
 
