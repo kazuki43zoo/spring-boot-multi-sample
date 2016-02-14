@@ -103,16 +103,16 @@
     </pluginRepositories>
 
     <modules>
-        <module>sample-component</module>
-        <module>sample-component-web</module>
-        <module>sample-domain</module>
-        <module>sample-screen</module>
-        <module>sample-screen-jsp</module>
-        <module>sample-screen-thymeleaf</module>
-        <module>sample-screen-freemarker</module>
-        <module>sample-api</module>
-        <module>sample-api-auth</module>
-        <module>sample-api-client</module>
+        <module>component</module>
+        <module>component-web</module>
+        <module>domain</module>
+        <module>screen</module>
+        <module>screen-jsp</module>
+        <module>screen-thymeleaf</module>
+        <module>screen-freemarker</module>
+        <module>api</module>
+        <module>api-auth</module>
+        <module>api-client</module>
     </modules>
 
 </project>

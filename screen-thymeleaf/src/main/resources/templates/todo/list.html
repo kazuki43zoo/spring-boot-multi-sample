@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="../../../../../../screen/src/main/resources/public/styles.css" type="text/css"
+          th:href="@{/styles.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.css}"/>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Todo List</h1>
+
+    <div id="todoForm">
+        <form action="list.html" method="post" class="form-inline"
+              th:action="@{/todos}" th:object="${todoForm}">
+            <input type="text" class="form-control" th:field="*{todoTitle}"/>
+            <span class="text-error" th:errors="*{todoTitle}">size must be between 1 and 30</span>
+            <button class="btn btn-default">Create</button>
+        </form>
+    </div>
+
+    <div id="todoList" th:if="${not #lists.isEmpty(todos)}">
+        <hr/>
+        <ul>
+            <li th:each="todo : ${todos}">
+                <span th:class="${todo.finished} ? 'strike'">
+                    <a href="detail.html"
+                       th:text="${todo.todoTitle}" th:href="@{/todos/{todoId}(todoId=${todo.todoId})}">
+                        Create Sample Application
+                    </a>
+                </span>
+
+                <form action="list.html" method="post" style="display: inline-block;"
+                      th:action="@{/todos/{todoId}(todoId=${todo.todoId})}" th:if="${not todo.finished}">
+                    <button name="finish" class="btn btn-default">Finish</button>
+                </form>
+                <form action="list.html" method="post" style="display: inline-block;"
+                      th:action="@{/todos/{todoId}(todoId=${todo.todoId})}">
+                    <button name="delete" class="btn btn-default">Delete</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <hr/>
+
+    <a href="../home.html" th:href="@{/}" class="btn btn-default">Home</a>
+
+    <form method="post" style="display: inline-block;"
+          th:action="@{/logout}" sec:authorize="isAuthenticated()">
+        <button class="btn btn-default">Logout</button>
+    </form>
+
+    <a th:href="@{/login}" class="btn btn-default" sec:authorize="!isAuthenticated()">Login</a>
+
+</div>
+</body>
+</html>
