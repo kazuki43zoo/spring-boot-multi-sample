@@ -1,0 +1,31 @@
+server:
+  port: 9082
+  context-path: /api-client
+
+spring:
+  profiles:
+    include: default,mybatis,security
+  thymeleaf:
+    cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG
+
+security:
+  oauth2:
+    client:
+      client-id: sample-client
+      client-secret: password
+      user-authorization-uri: http://localhost:9080/api-auth/oauth/authorize
+      access-token-uri: http://localhost:9080/api-auth/oauth/token
+      scope:
+        - read
+        - write
+
+

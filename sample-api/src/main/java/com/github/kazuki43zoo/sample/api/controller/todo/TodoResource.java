@@ -1,9 +1,10 @@
 package com.github.kazuki43zoo.sample.api.controller.todo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class TodoResource implements Serializable {
 
@@ -14,7 +15,6 @@ public class TodoResource implements Serializable {
     private String todoTitle;
 
     private LocalDate deadlineDate;
-
 
     private boolean finished;
 

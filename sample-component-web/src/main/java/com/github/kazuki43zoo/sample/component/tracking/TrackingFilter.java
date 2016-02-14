@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebFilter(filterName = "trackingFilter")
 public class TrackingFilter implements Filter {
@@ -28,10 +29,8 @@ public class TrackingFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         final String trackingIdKey = properties.getIdKey();
         if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
-            String trackingId = ((HttpServletRequest) request).getHeader(trackingIdKey);
-            if (trackingId == null) {
-                trackingId = idGenerator.generateId().toString();
-            }
+            String trackingId = Optional.ofNullable(((HttpServletRequest) request).getHeader(trackingIdKey))
+                    .orElse(idGenerator.generateId().toString());
             request.setAttribute(trackingIdKey, trackingId);
             ((HttpServletResponse) response).setHeader(trackingIdKey, trackingId);
             MDC.put(trackingIdKey, trackingId);

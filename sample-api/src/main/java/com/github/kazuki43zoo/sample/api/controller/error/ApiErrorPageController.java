@@ -28,10 +28,8 @@ public class ApiErrorPageController implements ErrorController {
     @RequestMapping("${server.error.path:${error.path:/error}}")
     public ApiError handleError(HttpServletRequest request) {
 
-        Exception ex = (Exception) request.getAttribute(
-                RequestDispatcher.ERROR_EXCEPTION);
-        Integer statusCode = (Integer) request.getAttribute(
-                RequestDispatcher.ERROR_STATUS_CODE);
+        Exception ex = (Exception) request.getAttribute(RequestDispatcher.ERROR_EXCEPTION);
+        Integer statusCode = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
 
         ApiError apiError;
         if (ex != null) {

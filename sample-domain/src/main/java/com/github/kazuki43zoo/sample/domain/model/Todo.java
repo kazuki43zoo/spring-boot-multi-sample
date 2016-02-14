@@ -20,6 +20,8 @@ public class Todo implements Serializable {
 
     private LocalDateTime createdAt;
 
+    private String trackingId;
+
     public String getTodoId() {
         return todoId;
     }
@@ -66,5 +68,13 @@ public class Todo implements Serializable {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getTrackingId() {
+        return trackingId;
+    }
+
+    public void setTrackingId(String trackingId) {
+        this.trackingId = trackingId;
     }
 }

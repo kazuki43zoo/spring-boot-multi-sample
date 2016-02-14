@@ -9,3 +9,6 @@ target
 .settings
 .apt_generated
 .factorypath
+
+# For Others
+.DS_Store

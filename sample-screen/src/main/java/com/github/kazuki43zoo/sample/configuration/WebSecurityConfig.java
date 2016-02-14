@@ -11,7 +11,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin().and()
-                .logout();
+                .logout().and()
+                .authorizeRequests()
+                .antMatchers("/todos/**").hasAnyRole("USER", "ADMIN", "ANONYMOUS");
     }
 
 }

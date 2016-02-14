@@ -21,7 +21,7 @@ import static org.junit.Assert.assertThat;
 @WebIntegrationTest(randomPort = true)
 public class HomeTests {
 
-    @Value("http://localhost:${local.server.port}")
+    @Value("http://localhost:${local.server.port}${server.context-path:}")
     String documentRootUrl;
 
     @Test

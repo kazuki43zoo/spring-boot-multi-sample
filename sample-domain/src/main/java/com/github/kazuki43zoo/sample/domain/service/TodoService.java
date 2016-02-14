@@ -4,16 +4,12 @@ import com.github.kazuki43zoo.sample.domain.model.Todo;
 import com.github.kazuki43zoo.sample.domain.repository.TodoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.IdGenerator;
-import org.springframework.util.JdkIdGenerator;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.List;
 
 @Service
 @Transactional
@@ -21,9 +17,6 @@ public class TodoService {
 
     @Autowired
     TodoRepository todoRepository;
-
-    @Autowired(required = false)
-    IdGenerator idGenerator = new JdkIdGenerator();
 
     @Autowired(required = false)
     Clock clock = Clock.systemDefaultZone();
@@ -36,22 +29,16 @@ public class TodoService {
         return todo;
     }
 
-    public Collection<Todo> findAll(String username) {
+    public List<Todo> findAll(String username) {
         return todoRepository.findAll(username);
     }
 
     public Todo create(Todo todo, String username) {
-
-        String todoId = idGenerator.generateId().toString();
         LocalDateTime createdAt = LocalDateTime.now(clock);
-
-        todo.setTodoId(todoId);
         todo.setUsername(username);
         todo.setCreatedAt(createdAt);
         todo.setFinished(false);
-
         todoRepository.create(todo);
-
         return todo;
     }
 
@@ -62,9 +49,9 @@ public class TodoService {
         return todo;
     }
 
-    public Todo update(Todo updatingTodo) {
-        Todo todo = findOne(updatingTodo.getTodoId());
-        BeanUtils.copyProperties(updatingTodo, todo);
+    public Todo update(String todoId, Todo updatingTodo) {
+        Todo todo = findOne(todoId);
+        BeanUtils.copyProperties(updatingTodo, todo, "todoId");
         todoRepository.update(todo);
         return todo;
     }

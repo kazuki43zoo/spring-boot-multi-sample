@@ -1,0 +1,22 @@
+server:
+  port: 9080
+  context-path: /api-auth
+
+spring:
+  profiles:
+    include: default,mybatis
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG
+
+security:
+  oauth2:
+    authorization:
+      check-token-access: isAuthenticated()
+    client:
+      client-id: sample-client
+      client-secret: password
+      scope: read,write

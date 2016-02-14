@@ -11,7 +11,8 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mybatis-spring-boot.version>1.0.0</mybatis-spring-boot.version>
+        <mybatis-spring-boot.version>1.0.1-SNAPSHOT</mybatis-spring-boot.version>
+        <webjar.bootstrap.version>3.3.6</webjar.bootstrap.version>
     </properties>
 
     <parent>
@@ -27,6 +28,11 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${webjar.bootstrap.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
@@ -68,7 +74,13 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-
+        <repository>
+            <id>sonatype-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <pluginRepositories>
@@ -94,11 +106,13 @@
         <module>sample-component</module>
         <module>sample-component-web</module>
         <module>sample-domain</module>
-        <module>sample-api</module>
         <module>sample-screen</module>
         <module>sample-screen-jsp</module>
         <module>sample-screen-thymeleaf</module>
         <module>sample-screen-freemarker</module>
+        <module>sample-api</module>
+        <module>sample-api-auth</module>
+        <module>sample-api-client</module>
     </modules>
 
 </project>

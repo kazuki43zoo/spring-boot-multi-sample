@@ -5,6 +5,7 @@ import org.apache.ibatis.type.JdbcType;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public class LocalDateTimeTypeHandle extends BaseTypeHandler<LocalDateTime> {
 
@@ -29,11 +30,9 @@ public class LocalDateTimeTypeHandle extends BaseTypeHandler<LocalDateTime> {
     }
 
     private LocalDateTime toLocalDateTime(Timestamp timestamp) {
-        if (timestamp == null) {
-            return null;
-        } else {
-            return timestamp.toLocalDateTime();
-        }
+        return Optional.ofNullable(timestamp)
+                .map(Timestamp::toLocalDateTime)
+                .orElse(null);
     }
 
 }

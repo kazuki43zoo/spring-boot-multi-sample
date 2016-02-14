@@ -50,7 +50,6 @@ public class ApiErrorCreator {
         return create(message);
     }
 
-
     private String getMessage(MessageSourceResolvable resolvable, Locale locale) {
         return messageSource.getMessage(resolvable, locale);
     }

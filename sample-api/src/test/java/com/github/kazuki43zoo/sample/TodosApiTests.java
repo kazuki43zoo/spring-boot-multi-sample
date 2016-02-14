@@ -3,51 +3,78 @@ package com.github.kazuki43zoo.sample;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.Serializable;
 import java.net.URI;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApiApplication.class)
+@SpringApplicationConfiguration(classes = {ApiApplication.class})
 @WebIntegrationTest(randomPort = true)
 public class TodosApiTests {
 
     @Configuration
-    public static class LocalContext {
+    static class LocalContext {
         @Bean
-        RestTemplate restTemplate() {
-            return new RestTemplate();
+        RestTemplate clientRestTemplate() {
+            RestTemplate restTemplate = new RestTemplate();
+            restTemplate.setInterceptors(Arrays.asList((request, body, execution) -> {
+                request.getHeaders().set(HttpHeaders.AUTHORIZATION, "Bearer dummyAccessToken");
+                return execution.execute(request, body);
+            }));
+            return restTemplate;
+        }
+
+        @Autowired
+        public void configureMockResponseOfCheckToken(RemoteTokenServices remoteTokenServices) {
+            RestTemplate restTemplate = new RestTemplate();
+            MockRestServiceServer mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
+            registerMockResponseOfCheckToken(mockRestServiceServer, 16);
+            remoteTokenServices.setRestTemplate(restTemplate);
+        }
+
+        private void registerMockResponseOfCheckToken(MockRestServiceServer mockRestServiceServer, int num) {
+            for (int i = 0; i < num; i++) {
+                mockRestServiceServer
+                        .expect(requestTo("http://localhost:9080/api-auth/oauth/check_token"))
+                        .andRespond(withSuccess()
+                                .body("{\"client_id\":\"sample-client\",\"user_name\":\"kazuki43zoo\",\"authorities\":\"ROLE_USER\"}")
+                                .contentType(MediaType.APPLICATION_JSON_UTF8));
+            }
         }
     }
 
-    @Value("http://localhost:${local.server.port}/todos")
+    @Value("http://localhost:${local.server.port}${server.context-path:}/todos")
     String todoResourceUrl;
 
     @Autowired
+    @Qualifier("clientRestTemplate")
     RestOperations restOperations;
 
     @Test
     public void postAndGetResource() {
+
         TodoResource resource = new TodoResource();
         resource.setTodoTitle("Todoアプリの開発");
 
@@ -62,6 +89,7 @@ public class TodosApiTests {
 
     @Test
     public void putResource() {
+
         TodoResource resource = new TodoResource();
         resource.setTodoTitle("Todoアプリの開発");
 
@@ -84,6 +112,7 @@ public class TodosApiTests {
 
     @Test
     public void deleteResource() {
+
         TodoResource resource = new TodoResource();
         resource.setTodoTitle("Todoアプリの開発");
 
@@ -109,7 +138,6 @@ public class TodosApiTests {
     public void getResources() {
 
         restOperations.delete(todoResourceUrl);
-
 
         {
             TodoResource resource = new TodoResource();

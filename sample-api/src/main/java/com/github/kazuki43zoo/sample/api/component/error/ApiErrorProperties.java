@@ -29,11 +29,12 @@ public class ApiErrorProperties {
         this.messageMappings = messageMappings;
     }
 
-
     public String resolveMessage(Exception ex, String defaultMessage) {
         return getMessageMappings().entrySet().stream()
-                .filter(entry -> entry.getKey().isAssignableFrom(ex.getClass())).findFirst()
-                .map(Map.Entry::getValue).orElse(defaultMessage);
+                .filter(entry -> entry.getKey().isAssignableFrom(ex.getClass()))
+                .findFirst()
+                .map(Map.Entry::getValue)
+                .orElse(defaultMessage);
     }
 
 }

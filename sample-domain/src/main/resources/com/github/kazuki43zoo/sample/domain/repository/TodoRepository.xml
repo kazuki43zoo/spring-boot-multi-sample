@@ -9,7 +9,6 @@
     </resultMap>
 
     <select id="findOne" parameterType="String" resultMap="todoResultMap">
-        <![CDATA[
         SELECT
             todo_id,
             username,
@@ -21,11 +20,9 @@
             todo
         WHERE
             todo_id = #{todoId}
-    ]]>
     </select>
 
     <select id="findAll" resultMap="todoResultMap">
-        <![CDATA[
         SELECT
             todo_id,
             username,
@@ -37,11 +34,12 @@
             todo
         WHERE
             username = #{usename}
-    ]]>
     </select>
 
     <insert id="create" parameterType="Todo">
-        <![CDATA[
+        <selectKey keyProperty="todoId" resultType="String" order="BEFORE">
+            SELECT RANDOM_UUID()
+        </selectKey>
         INSERT INTO todo
         (
             todo_id,
@@ -49,7 +47,8 @@
             todo_title,
             deadline_date,
             finished,
-            created_at
+            created_at,
+            tracking_id
         )
         VALUES
         (
@@ -58,13 +57,12 @@
             #{todoTitle},
             #{deadlineDate},
             #{finished},
-            #{createdAt}
+            #{createdAt},
+            #{trackingId}
         )
-    ]]>
     </insert>
 
     <update id="update" parameterType="Todo">
-        <![CDATA[
         UPDATE todo
         SET
             todo_title = #{todoTitle},
@@ -72,28 +70,23 @@
             deadline_date = #{deadlineDate}
         WHERE
             todo_id = #{todoId}
-    ]]>
     </update>
 
     <delete id="delete" parameterType="Todo">
-        <![CDATA[
         DELETE FROM
             todo
         WHERE
             todo_id = #{todoId}
-    ]]>
     </delete>
 
     <select id="countByFinished" parameterType="Boolean"
             resultType="Long">
-        <![CDATA[
         SELECT
             COUNT(*)
         FROM
             todo
         WHERE
             finished = #{finished}
-    ]]>
     </select>
 
 </mapper>

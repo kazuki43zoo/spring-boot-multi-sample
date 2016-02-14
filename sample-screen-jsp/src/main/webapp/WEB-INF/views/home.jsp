@@ -10,29 +10,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Home</title>
     <link rel="stylesheet" href="<c:url value='/styles.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/3.3.6/css/bootstrap.css'/>" type="text/css"/>
 </head>
 
 <body>
-<span id="message">
-<spring:message code="screen.welcome" text="Welcome !!"/>
-</span>
-<hr/>
-<a href="<c:url value='/todos'/>">Todo List</a>
+<div class="container">
 
-<hr/>
-<sec:authorize access="isAuthenticated()" var="isAuthenticated"/>
-<c:choose>
-    <c:when test="${isAuthenticated}">
-        <c:url value="/logout" var="logoutUrl"/>
-        <form:form action="${logoutUrl}" cssStyle="display: inline-block;">
-            <button>Logout</button>
-        </form:form>
-    </c:when>
-    <c:otherwise>
-        <a href="<c:url value='/login'/>">Login</a>
-    </c:otherwise>
-</c:choose>
+    <h1 id="message"><spring:message code="screen.welcome" text="Welcome !!"/></h1>
 
+    <a href="<c:url value='/todos'/>" class="btn btn-default">Todo List</a>
+
+    <hr/>
+    <sec:authorize access="isAuthenticated()" var="isAuthenticated"/>
+    <c:choose>
+        <c:when test="${isAuthenticated}">
+            <c:url value="/logout" var="logoutUrl"/>
+            <form:form action="${logoutUrl}" cssStyle="display: inline-block;">
+                <button class="btn btn-default">Logout</button>
+            </form:form>
+        </c:when>
+        <c:otherwise>
+            <a href="<c:url value='/login'/>" class="btn btn-default">Login</a>
+        </c:otherwise>
+    </c:choose>
+
+</div>
 </body>
 
 </html>

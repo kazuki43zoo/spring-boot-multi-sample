@@ -1,5 +1,6 @@
 server:
-  port: 8080
+  port: 9081
+  context-path: /api
 
 spring:
   profiles:
@@ -8,6 +9,9 @@ spring:
     date-format: com.fasterxml.jackson.databind.util.StdDateFormat
     serialization:
       indent_output: true
+    deserialization:
+      fail_on_unknown_properties: false
+
 api:
   error:
     documentation-url: http://example.com/api/errors
@@ -22,3 +26,12 @@ api:
 logging:
   level:
     com.github.kazuki43zoo.sample: DEBUG
+
+security:
+  oauth2:
+    client:
+      client-id: sample-resource
+      client-secret: password
+    resource:
+      token-info-uri: http://localhost:9080/api-auth/oauth/check_token
+
