@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.kazuki43zoo</groupId>
-    <artifactId>spring-boot-multi-sample</artifactId>
+    <groupId>com.github.kazuki43zoo.spring.boot</groupId>
+    <artifactId>multi-sample</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Spring Boot Multi Project Samples</name>
@@ -35,22 +35,22 @@
                 <version>${webjar.bootstrap.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.kazuki43zoo</groupId>
+                <groupId>com.github.kazuki43zoo.spring.boot</groupId>
                 <artifactId>component</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.kazuki43zoo</groupId>
+                <groupId>com.github.kazuki43zoo.spring.boot</groupId>
                 <artifactId>component-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.kazuki43zoo</groupId>
+                <groupId>com.github.kazuki43zoo.spring.boot</groupId>
                 <artifactId>domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.kazuki43zoo</groupId>
+                <groupId>com.github.kazuki43zoo.spring.boot</groupId>
                 <artifactId>screen</artifactId>
                 <version>${project.version}</version>
             </dependency>

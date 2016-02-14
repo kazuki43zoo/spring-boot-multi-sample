@@ -7,15 +7,15 @@
     <name>Spring Boot Multi Project Samples - OAuth2 Client -</name>
 
     <parent>
-        <groupId>com.github.kazuki43zoo</groupId>
-        <artifactId>spring-boot-multi-sample</artifactId>
+        <groupId>com.github.kazuki43zoo.spring.boot</groupId>
+        <artifactId>multi-sample</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
-            <groupId>com.github.kazuki43zoo</groupId>
+            <groupId>com.github.kazuki43zoo.spring.boot</groupId>
             <artifactId>screen</artifactId>
         </dependency>
         <dependency>
