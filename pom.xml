@@ -36,22 +36,22 @@
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
-                <artifactId>sample-component</artifactId>
+                <artifactId>component</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
-                <artifactId>sample-component-web</artifactId>
+                <artifactId>component-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
-                <artifactId>sample-domain</artifactId>
+                <artifactId>domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo</groupId>
-                <artifactId>sample-screen</artifactId>
+                <artifactId>screen</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
