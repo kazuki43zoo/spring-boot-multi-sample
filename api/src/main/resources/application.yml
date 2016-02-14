@@ -22,6 +22,8 @@ api:
       : Request value is invalid
       ? org.springframework.validation.BindException
       : Request value is invalid
+      ? org.springframework.security.access.AccessDeniedException
+      : Access is denied
 
 logging:
   level:

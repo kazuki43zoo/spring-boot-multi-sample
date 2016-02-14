@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -50,6 +51,12 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleTodoNotFoundException(
             TodoNotFoundException ex, WebRequest request) {
         return handleExceptionInternal(ex, null, null, HttpStatus.NOT_FOUND, request);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Object> handleAccessDeniedException(
+            AccessDeniedException ex, WebRequest request) {
+        return handleExceptionInternal(ex, null, null, HttpStatus.FORBIDDEN, request);
     }
 
     @ExceptionHandler
