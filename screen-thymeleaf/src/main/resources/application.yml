@@ -1,6 +1,6 @@
 server:
   port: 8080
-  context-path: /tml
+  context-path: /tlf
 
 spring:
   profiles:
