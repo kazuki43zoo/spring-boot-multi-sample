@@ -59,7 +59,7 @@ public class TodosApiTests {
                 mockRestServiceServer
                         .expect(requestTo("http://localhost:9080/api-auth/oauth/check_token"))
                         .andRespond(withSuccess()
-                                .body("{\"client_id\":\"sample-client\",\"user_name\":\"kazuki43zoo\",\"authorities\":\"ROLE_USER\"}")
+                                .body("{\"client_id\":\"sample-client\",\"user_name\":\"kazuki43zoo\",\"authorities\":\"ROLE_USER\",\"scope\":[\"read\",\"write\"]}}")
                                 .contentType(MediaType.APPLICATION_JSON_UTF8));
             }
         }

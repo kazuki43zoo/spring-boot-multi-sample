@@ -35,5 +35,6 @@ security:
       client-id: sample-resource
       client-secret: password
     resource:
-      token-info-uri: http://localhost:9080/api-auth/oauth/check_token
+      jwt:
+        key-uri: http://localhost:9080/api-auth/oauth/token_key
 
