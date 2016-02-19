@@ -1,6 +1,6 @@
 server:
   port: 8082
-  context-path: /jsp
+  context-path: /j
   error:
     whitelabel:
       enabled: false # disable default error view

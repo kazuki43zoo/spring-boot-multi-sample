@@ -1,6 +1,6 @@
 server:
   port: 8081
-  context-path: /fmk
+  context-path: /f
 
 spring:
   profiles:
