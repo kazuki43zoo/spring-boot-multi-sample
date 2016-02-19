@@ -18,7 +18,7 @@ public class FreeMarkerConfig {
     void configureTaglibFactory(FreeMarkerConfigurer configurer) {
         TaglibFactory factory = configurer.getTaglibFactory();
         factory.setMetaInfTldSources(Arrays.asList(new TaglibFactory.ClasspathMetaInfTldSource(Pattern.compile(".*"))));
-        factory.setObjectWrapper(new BeansWrapperBuilder(freemarker.template.Configuration.VERSION_2_3_23).build());
+        factory.setObjectWrapper(new BeansWrapperBuilder(freemarker.template.Configuration.getVersion()).build());
     }
 
 }
