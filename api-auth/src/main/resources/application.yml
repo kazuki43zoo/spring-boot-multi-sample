@@ -1,6 +1,6 @@
 server:
   port: 9080
-  context-path: /api-auth
+  context-path: /api-a
 
 spring:
   profiles:

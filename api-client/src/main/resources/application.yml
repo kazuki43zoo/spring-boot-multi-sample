@@ -1,6 +1,6 @@
 server:
   port: 9082
-  context-path: /api-client
+  context-path: /api-c
 
 spring:
   profiles:
@@ -22,8 +22,8 @@ security:
     client:
       client-id: sample-client
       client-secret: password
-      user-authorization-uri: http://localhost:9080/api-auth/oauth/authorize
-      access-token-uri: http://localhost:9080/api-auth/oauth/token
+      user-authorization-uri: http://localhost:9080/api-a/oauth/authorize
+      access-token-uri: http://localhost:9080/api-a/oauth/token
       scope:
         - read
         - write
