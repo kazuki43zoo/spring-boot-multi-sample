@@ -11,3 +11,5 @@ spring:
 logging:
   level:
     com.github.kazuki43zoo.sample: DEBUG
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
