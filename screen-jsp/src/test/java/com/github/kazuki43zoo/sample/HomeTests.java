@@ -29,7 +29,7 @@ public class HomeTests {
     	try(WebClient webClient = new WebClient(BrowserVersion.FIREFOX_38)){
             HtmlPage page = webClient.getPage(new URL(documentRootUrl));
 
-            assertThat(page.getElementById("message").asText(), is("Hello JSP!!"));
+            assertThat(page.getElementById("message").asText(), is("Hello JSP !!"));
         }
     }
 
