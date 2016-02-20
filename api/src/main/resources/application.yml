@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    include: default,mybatis
+    include: mybatis
   jackson:
     date-format: com.fasterxml.jackson.databind.util.StdDateFormat
     serialization:
@@ -37,4 +37,3 @@ security:
     resource:
       jwt:
         key-value: sample-jwt-sign-key
-

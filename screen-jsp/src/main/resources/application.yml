@@ -7,7 +7,7 @@ server:
 
 spring:
   profiles:
-    include: default,mybatis,security
+    include: mybatis,security
   mvc:
     view:
       prefix: /WEB-INF/views/

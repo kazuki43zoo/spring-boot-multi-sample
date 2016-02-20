@@ -4,7 +4,7 @@ server:
 
 spring:
   profiles:
-    include: default,mybatis,security,api-client
+    include: mybatis,security,api-client
   thymeleaf:
     cache: false
   resources:

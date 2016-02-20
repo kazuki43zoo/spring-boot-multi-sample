@@ -1,7 +1,0 @@
-# Eanble remote token instread of jwt token for testing
-security:
-  oauth2:
-    resource:
-      token-info-uri: http://localhost:9080/api-auth/oauth/check_token
-      jwt:
-        key-uri:

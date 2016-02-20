@@ -2,6 +2,7 @@ package com.github.kazuki43zoo.sample;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,10 +11,16 @@ import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
-import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.OAuth2Request;
+import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
@@ -21,13 +28,10 @@ import org.springframework.web.client.RestTemplate;
 import java.io.Serializable;
 import java.net.URI;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {ApiApplication.class})
@@ -36,6 +40,7 @@ public class TodosApiTests {
 
     @Configuration
     static class LocalContext {
+
         @Bean
         RestTemplate clientRestTemplate() {
             RestTemplate restTemplate = new RestTemplate();
@@ -46,23 +51,28 @@ public class TodosApiTests {
             return restTemplate;
         }
 
-        @Autowired
-        public void configureMockResponseOfCheckToken(RemoteTokenServices remoteTokenServices) {
-            RestTemplate restTemplate = new RestTemplate();
-            MockRestServiceServer mockRestServiceServer = MockRestServiceServer.createServer(restTemplate);
-            registerMockResponseOfCheckToken(mockRestServiceServer, 16);
-            remoteTokenServices.setRestTemplate(restTemplate);
+        @Bean
+        ResourceServerTokenServices mockedResourceServerTokenServices() {
+            Map<String, String> requestParameters = new HashMap<>();
+            String clientId = "sample-client";
+            Collection<? extends GrantedAuthority> authorities = Collections.emptyList();
+            boolean approved = true;
+            Set<String> scope = new LinkedHashSet<>(Arrays.asList("read", "write"));
+            Set<String> resourceIds = new LinkedHashSet<>(Arrays.asList("oauth2-resource"));
+            String redirectUri = "";
+            Set<String> responseTypes = new LinkedHashSet<>();
+            Map<String, Serializable> extensionProperties = new HashMap<>();
+
+            OAuth2Authentication authentication = new OAuth2Authentication(
+                    new OAuth2Request(requestParameters, clientId, authorities, approved, scope, resourceIds, redirectUri, responseTypes, extensionProperties),
+                    new TestingAuthenticationToken("kazuki43zoo", "", "ROLE_USER"));
+
+            ResourceServerTokenServices resourceServerTokenServices = Mockito.mock(ResourceServerTokenServices.class);
+            Mockito.doReturn(authentication).when(resourceServerTokenServices).loadAuthentication("dummyAccessToken");
+
+            return resourceServerTokenServices;
         }
 
-        private void registerMockResponseOfCheckToken(MockRestServiceServer mockRestServiceServer, int num) {
-            for (int i = 0; i < num; i++) {
-                mockRestServiceServer
-                        .expect(requestTo("http://localhost:9080/api-auth/oauth/check_token"))
-                        .andRespond(withSuccess()
-                                .body("{\"client_id\":\"sample-client\",\"user_name\":\"kazuki43zoo\",\"authorities\":\"ROLE_USER\",\"scope\":[\"read\",\"write\"]}}")
-                                .contentType(MediaType.APPLICATION_JSON_UTF8));
-            }
-        }
     }
 
     @Value("http://localhost:${local.server.port}${server.context-path:}/todos")
