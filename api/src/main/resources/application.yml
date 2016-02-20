@@ -1,6 +1,6 @@
 server:
   port: 9081
-  context-path: /api
+  context-path: /api-r
 
 spring:
   profiles:

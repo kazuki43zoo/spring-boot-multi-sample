@@ -1,6 +1,6 @@
 server:
   port: 8083
-  context-path: /j
+  context-path: /scr-j
   error:
     whitelabel:
       enabled: false # disable default error view

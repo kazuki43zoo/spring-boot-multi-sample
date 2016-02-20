@@ -23,10 +23,10 @@ import java.util.List;
 @Primary
 public class TodoApiRepository implements TodoRepository {
 
-    @Value("${api.baseUrl:http://localhost:9081/api}/todos")
+    @Value("${api.baseUrl:http://localhost:9081/api-r}/todos")
     String todosResourceUrl;
 
-    @Value("${api.baseUrl:http://localhost:9081/api}/todos/{todoId}")
+    @Value("${api.baseUrl:http://localhost:9081/api-r}/todos/{todoId}")
     String todoResourceUrl;
 
     @Autowired

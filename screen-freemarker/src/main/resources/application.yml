@@ -1,6 +1,6 @@
 server:
   port: 8082
-  context-path: /f
+  context-path: /scr-f
 
 spring:
   profiles:

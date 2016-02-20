@@ -1,6 +1,6 @@
 server:
   port: 8081
-  context-path: /t
+  context-path: /scr-t
 
 spring:
   profiles:
