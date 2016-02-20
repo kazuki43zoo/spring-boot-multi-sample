@@ -1,17 +1,14 @@
 server:
   port: 10000
   context-path: /db
-  context-parameters.db.url: ${spring.datasource.tomcat.url}
-  context-parameters.db.user: ${spring.datasource.tomcat.username}
-  context-parameters.db.password: ${spring.datasource.tomcat.passowrd}
+  context-parameters.db.url: jdbc:h2:~/db/spring-boot-multi-sample;DB_CLOSE_ON_EXIT=FALSE
+  context-parameters.db.user: sa
+  context-parameters.db.password:
   context-parameters.db.tcpServer: -tcpAllowOthers -tcpPort 10001
 
 spring:
-  datasource:
-    tomcat:
-      url: jdbc:h2:~/db/spring-boot-multi-sample;DB_CLOSE_ON_EXIT=FALSE
-      username: sa
-      passowrd:
+  profiles:
+    active: database
   h2:
     console:
       enabled: true

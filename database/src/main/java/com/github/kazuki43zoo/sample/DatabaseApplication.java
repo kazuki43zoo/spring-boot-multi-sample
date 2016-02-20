@@ -4,7 +4,9 @@ import org.h2.server.web.DbStarter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
+@Profile("database")
 @SpringBootApplication
 public class DatabaseApplication {
 
