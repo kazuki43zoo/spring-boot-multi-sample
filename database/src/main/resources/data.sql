@@ -1,3 +1,6 @@
+DELETE FROM account WHERE username IN ('demo','admin','user','kazuki43zoo');
+DELETE FROM oauth_client_details WHERE client_id IN ('sample-client');
+
 INSERT INTO account (account_id, username, password, first_name, last_name, authorities)
 VALUES (random_uuid(), 'demo', '$2a$10$oxSJl.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK', 'Taro', 'Yamada',
         'ROLE_USER');

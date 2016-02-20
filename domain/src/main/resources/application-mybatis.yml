@@ -4,3 +4,10 @@ logging:
 
 mybatis:
   config: classpath:META-INF/mybatis/mybatis-config.xml
+
+spring:
+  datasource:
+    tomcat:
+      url: jdbc:h2:tcp://localhost:10001/~/db/spring-boot-multi-sample;LOCK_TIMEOUT=10000;
+      username: sa
+      passowrd:
