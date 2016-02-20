@@ -116,7 +116,7 @@
         <module>screen-jsp</module>
         <module>screen-thymeleaf</module>
         <module>screen-freemarker</module>
-        <module>api</module>
+        <module>api-resource</module>
         <module>api-auth</module>
         <module>api-client</module>
     </modules>
