@@ -8,7 +8,7 @@
         <id property="todoId" column="todo_id" />
     </resultMap>
 
-    <select id="findOne" parameterType="String" resultMap="todoResultMap">
+    <sql id="selectFrom">
         SELECT
             todo_id,
             username,
@@ -18,20 +18,16 @@
             created_at
         FROM
             todo
+    </sql>
+
+    <select id="findOne" parameterType="String" resultMap="todoResultMap">
+        <include refid="selectFrom"/>
         WHERE
             todo_id = #{todoId}
     </select>
 
-    <select id="findAll" resultMap="todoResultMap">
-        SELECT
-            todo_id,
-            username,
-            todo_title,
-            deadline_date,
-            finished,
-            created_at
-        FROM
-            todo
+    <select id="findAllByUsername" resultMap="todoResultMap">
+        <include refid="selectFrom"/>
         WHERE
             username = #{usename}
     </select>

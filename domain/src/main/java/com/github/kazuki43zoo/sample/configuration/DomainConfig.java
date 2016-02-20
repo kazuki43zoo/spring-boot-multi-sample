@@ -6,4 +6,5 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan("com.github.kazuki43zoo.sample.domain.repository")
 @Configuration
 public class DomainConfig {
+
 }

@@ -12,7 +12,7 @@ public interface TodoRepository {
             "or (returnObject.username == authentication.name)")
     Todo findOne(String todoId);
 
-    List<Todo> findAll(String usename);
+    List<Todo> findAllByUsername(String usename);
 
     void create(Todo todo);
 

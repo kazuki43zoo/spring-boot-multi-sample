@@ -45,7 +45,7 @@ public class TodoApiRepository implements TodoRepository {
     }
 
     @Override
-    public List<Todo> findAll(String usename) {
+    public List<Todo> findAllByUsername(String usename) {
         ResponseEntity<List<Todo>> responseEntity =
                 restOperations.exchange(RequestEntity.get(URI.create(todosResourceUrl)).build(), new ParameterizedTypeReference<List<Todo>>() {
                 });

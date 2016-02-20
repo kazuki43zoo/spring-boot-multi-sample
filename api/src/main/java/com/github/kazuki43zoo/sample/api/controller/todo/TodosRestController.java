@@ -28,7 +28,7 @@ public class TodosRestController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<TodoResource> search(Principal principal) {
-        return todoService.findAll(principal.getName())
+        return todoService.findAllByUsername(principal.getName())
                 .stream().map(todo -> {
                     TodoResource resource = new TodoResource();
                     BeanUtils.copyProperties(todo, resource);
@@ -55,7 +55,7 @@ public class TodosRestController {
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteBooks(Principal principal) {
-        todoService.findAll(principal.getName())
+        todoService.findAllByUsername(principal.getName())
                 .forEach(todo -> todoService.delete(todo.getTodoId()));
     }
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.github.kazuki43zoo.sample.domain.repository.AccountRepository">
+
+    <resultMap id="accountResultMap" type="Account">
+        <id property="accountId" column="account_id"/>
+    </resultMap>
+
+    <sql id="selectFrom">
+        SELECT
+            account_id,
+            username,
+            password,
+            first_name,
+            last_name,
+            authorities
+        FROM
+            account
+    </sql>
+
+    <select id="findOne" parameterType="String" resultMap="accountResultMap">
+        <include refid="selectFrom"/>
+        WHERE
+            account_id = #{accountId}
+    </select>
+
+    <select id="findOneByUsername" parameterType="String" resultMap="accountResultMap">
+        <include refid="selectFrom"/>
+        WHERE
+            username = #{username}
+    </select>
+
+</mapper>

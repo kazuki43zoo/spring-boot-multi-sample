@@ -32,7 +32,7 @@ public class TodoController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model, Principal principal) {
-        List<Todo> todos = todoService.findAll(extractUsername(principal));
+        List<Todo> todos = todoService.findAllByUsername(extractUsername(principal));
         model.addAttribute("todos", todos);
         return "todo/list";
     }
