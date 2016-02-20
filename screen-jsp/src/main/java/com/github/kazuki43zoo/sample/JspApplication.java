@@ -21,13 +21,13 @@ public class JspApplication {
     }
 
     // TODO: This solutions is workaround for execution at working directory of multi project root.
-    @Profile("default")
+    @Profile("local")
     @Component
     private static class StandaloneEmbeddedServletContainerCustomizer implements EmbeddedServletContainerCustomizer {
 
         @Override
         public void customize(ConfigurableEmbeddedServletContainer container) {
-            File screen = new File("sample-screen-jsp");
+            File screen = new File("screen-jsp");
             if (screen.exists()) {
                 File docRoot = new File(screen, "src/main/webapp");
                 if (docRoot.exists()) {

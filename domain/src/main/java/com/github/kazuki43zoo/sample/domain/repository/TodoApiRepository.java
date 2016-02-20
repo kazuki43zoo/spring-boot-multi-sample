@@ -32,7 +32,7 @@ public class TodoApiRepository implements TodoRepository {
     @Autowired
     RestOperations restOperations;
 
-    @PostAuthorize("permitAll()")
+    @PostAuthorize("permitAll()") // Override access policy on interface method
     @Override
     public Todo findOne(String todoId) {
         Todo todo = null;

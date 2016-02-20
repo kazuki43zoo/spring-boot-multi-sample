@@ -10,7 +10,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .formLogin().and()
+                .formLogin().loginPage("/login").and()
                 .logout().and()
                 .authorizeRequests()
                 .antMatchers("/todos/**").hasAnyRole("USER", "ADMIN", "ANONYMOUS");
