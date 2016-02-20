@@ -15,6 +15,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.authentication.TestingAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -25,6 +27,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
+import javax.sql.DataSource;
 import java.io.Serializable;
 import java.net.URI;
 import java.time.LocalDateTime;
@@ -40,6 +43,11 @@ public class TodosApiTests {
 
     @Configuration
     static class LocalContext {
+
+        @Bean
+        DataSource dataSource() {
+            return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2).build();
+        }
 
         @Bean
         RestTemplate clientRestTemplate() {

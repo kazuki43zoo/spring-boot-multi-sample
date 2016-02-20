@@ -54,6 +54,11 @@
                 <artifactId>screen</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.kazuki43zoo.spring.boot</groupId>
+                <artifactId>database</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -103,6 +108,7 @@
     </pluginRepositories>
 
     <modules>
+        <module>database</module>
         <module>component</module>
         <module>component-web</module>
         <module>domain</module>
