@@ -36,5 +36,5 @@ security:
       client-secret: password
     resource:
       jwt:
-        key-uri: http://localhost:9080/api-auth/oauth/token_key
+        key-value: sample-jwt-sign-key
 

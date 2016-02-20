@@ -11,4 +11,3 @@ spring:
 logging:
   level:
     com.github.kazuki43zoo.sample: DEBUG
-
