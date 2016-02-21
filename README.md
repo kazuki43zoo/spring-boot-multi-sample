@@ -8,7 +8,7 @@ Spring Boot Multi Project Samples
 
 Structure of this applications are following.
 
-![alt text](overview.png "Sample Applications Structure")
+![Sample Applications Structure](overview.png)
 
 > Note:
 >
@@ -24,7 +24,7 @@ Structure of this applications are following.
 | API Server<br>(OAuth 2.0) | api-client        | /api-c | OAuth 2.0 Client Application (Screen Application)<br>[http://localhost:9082/api-c](http://localhost:9082/api-c) | |
 |                           | api-resource      | /api-r | OAuth 2.0 Resource Server (RESTful Web Services)<br>[http://localhost:9081/api-r](http://localhost:9081/api-r) | |
 |                           | api-auth          | /api-a | OAuth 2.0 Authorization Server (Resource Owner Authentication & Grant access authorities to resource)<br>[http://localhost:9080/api-a](http://localhost:9080/api-a) | |
-| Database<br>Console AP    | database          | /db    | Console Application of H2 Database<br>[http://localhost:10000/db](http://localhost:10000/db) | |
+| H2 Database<br>Console AP | database          | /db    | Console Application of H2 Database<br>[http://localhost:10000/db](http://localhost:10000/db) | |
 | Domain<br>Components      | domain            | -      | Domain components (`@Service`, `@Repository`, Domain Objects, etc ...) | |
 | Common<br>Components      | component         | -      | Common components | |
 |                           | component-web     | -      | Common components that depend on web layer (`@WebFilter`, `@WebListener`, etc ...) | |
@@ -39,10 +39,11 @@ Structure of this applications are following.
 | -------- | ----------- | ------- |
 | / | Top Page | |
 | /todos | Todo List Page | |
+| /todos/{todoId} | Todo Detail Page | |
 | /login | Login Page | |
 | /logout | Logout Processing | |
 
-### OAuth 2.0 Resource Server
+### OAuth 2.0 Resource Server (RESTful Web Services)
 
 | Endpoint | Description | Remarks |
 | -------- | ----------- | ------- |
@@ -58,9 +59,10 @@ Structure of this applications are following.
 | /oauth/token | API for obtaining the access token(JWT) | |
 
 
-### Databae Console AP
+### H2 Database Console AP
 
 | Endpoint | Description | Remarks |
 | -------- | ----------- | ------- |
+| / | Redirect to H2 Console Page | |
 | /h2-console | H2 Console Page | |
 
