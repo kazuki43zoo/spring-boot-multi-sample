@@ -37,7 +37,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {ApiApplication.class})
+@SpringApplicationConfiguration(classes = {ApiResourceApplication.class})
 @WebIntegrationTest(randomPort = true)
 public class TodosApiTests {
 
