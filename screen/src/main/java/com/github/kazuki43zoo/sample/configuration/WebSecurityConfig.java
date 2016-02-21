@@ -9,10 +9,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .formLogin().loginPage("/login").permitAll().and()
-                .logout().logoutSuccessUrl("/?logout").permitAll().and()
-                .authorizeRequests()
+        http.formLogin().loginPage("/login").permitAll();
+        http.logout().logoutSuccessUrl("/?logout").permitAll();
+        http.authorizeRequests()
                 .antMatchers("/todos/**").hasAnyRole("USER", "ADMIN", "ANONYMOUS");
     }
 
