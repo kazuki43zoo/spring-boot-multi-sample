@@ -17,6 +17,10 @@
 
     <h1 id="message" th:text="#{screen.welcome}">Welcome!!</h1>
 
+    <div class="alert alert-success" role="alert" th:if="${param.logout}">
+        <span>Logout was succeed</span>
+    </div>
+
     <hr/>
     <form action="login.html" method="post" style="display: inline-block;"
           th:action="@{/logout}" sec:authorize="isAuthenticated()">

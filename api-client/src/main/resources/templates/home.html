@@ -21,6 +21,10 @@
 
     <h1 id="message" th:text="#{screen.welcome}">Welcome!!</h1>
 
+    <div class="alert alert-success" role="alert" th:if="${param.logout}">
+        <span>Logout was succeed</span>
+    </div>
+
     <a href="todo/list.html" th:href="@{/todos}" class="btn btn-default">Todo List</a>
 
     <hr/>

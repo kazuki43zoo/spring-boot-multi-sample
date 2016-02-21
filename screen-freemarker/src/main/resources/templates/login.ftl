@@ -26,11 +26,6 @@
             <span>${SPRING_SECURITY_LAST_EXCEPTION.localizedMessage}</span>
         </div>
     </#if>
-    <#if RequestParameters.logout??>
-        <div class="alert alert-success" role="alert">
-            <span>Logout was succeed</span>
-        </div>
-    </#if>
 
     <form action="<@spring.url '/login'/>" method="post">
         <div class="form-group">

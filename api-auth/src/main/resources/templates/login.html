@@ -19,9 +19,6 @@
     <div class="alert alert-danger" role="alert" th:if="${param.error}">
         <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.localizedMessage}">Bad Credential</span>
     </div>
-    <div class="alert alert-success" role="alert" th:if="${param.logout}">
-        <span>Logout was succeed</span>
-    </div>
 
     <form action="home.html" method="post" th:action="@{/login}">
         <div class="form-group">

@@ -21,6 +21,12 @@
 
     <h1 id="message"><@spring.message "screen.welcome"/></h1>
 
+    <#if RequestParameters.logout??>
+        <div class="alert alert-success" role="alert">
+            <span>Logout was succeed</span>
+        </div>
+    </#if>
+
     <a href="<@spring.url '/todos'/>" class="btn btn-default">Todo List</a>
 
     <hr/>

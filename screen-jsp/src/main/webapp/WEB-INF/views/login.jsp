@@ -25,11 +25,6 @@
             <span><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.localizedMessage}"/></span>
         </div>
     </c:if>
-    <c:if test="${param.containsKey('logout')}">
-        <div class="alert alert-success" role="alert">
-            <span>Logout was succeed</span>
-        </div>
-    </c:if>
 
     <c:url value="/login" var="loginUrl"/>
     <form:form action="${loginUrl}">

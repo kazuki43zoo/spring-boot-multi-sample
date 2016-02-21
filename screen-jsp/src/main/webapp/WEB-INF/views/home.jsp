@@ -20,6 +20,12 @@
 
     <h1 id="message"><spring:message code="screen.welcome" text="Welcome !!"/></h1>
 
+    <c:if test="${param.containsKey('logout')}">
+        <div class="alert alert-success" role="alert">
+            <span>Logout was succeed</span>
+        </div>
+    </c:if>
+
     <a href="<c:url value='/todos'/>" class="btn btn-default">Todo List</a>
 
     <hr/>
