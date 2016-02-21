@@ -27,6 +27,6 @@
     margin: 15px 0px 15px 0px;
 }
 
-#todoList li {
-    margin-top: 5px;
+#todoList {
+    margin-top: 10px;
 }

@@ -31,11 +31,19 @@
 
     <#if todos?size != 0>
 
-        <div id="todoList">
-            <hr/>
-            <ul>
-                <#list todos as todo>
-                    <li>
+
+        <table id="todoList" class="table table-hover">
+
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Operations</th>
+            </tr>
+
+            <#list todos as todo>
+                <tr>
+                    <td>${todo?counter}</td>
+                    <td>
                         <#switch todo.finished>
                             <#case true>
                                 <span class="strike"><a
@@ -43,22 +51,26 @@
                                 <#break />
                             <#default>
                                 <span><a href="<@spring.url '/todos/${todo.todoId}'/>">${todo.todoTitle}</a></span>
-
-                                <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post"
-                                      style="display: inline-block;">
-                                    <button name="finish" class="btn btn-default">Finish</button>
-                                    <@sec.csrfInput />
-                                </form>
                         </#switch>
+                    </td>
+                    <td>
+                        <#if !todo.finished>
+                            <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post"
+                                  style="display: inline-block;">
+                                <button name="finish" class="btn btn-default">Finish</button>
+                                <@sec.csrfInput />
+                            </form>
+                        </#if>
                         <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post"
                               style="display: inline-block;">
                             <button name="delete" class="btn btn-default">Delete</button>
                             <@sec.csrfInput />
                         </form>
-                    </li>
-                </#list>
-            </ul>
-        </div>
+                    </td>
+                </tr>
+            </#list>
+
+        </table>
 
     </#if>
 

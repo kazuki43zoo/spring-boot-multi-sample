@@ -30,33 +30,38 @@
 
     <c:if test="${not empty todos}">
 
-        <div id="todoList">
-            <hr/>
-            <ul>
-                <c:forEach items="${todos}" var="todo">
-                    <li>
-                        <c:choose>
-                            <c:when test="${todo.finished}">
-                                <span class="strike">
-                                    <a href="<c:url value='/todos/${todo.todoId}'/>"><c:out
-                                            value="${todo.todoTitle}"/></a>
-                                </span>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="<c:url value='/todos/${todo.todoId}'/>"><c:out
-                                        value="${todo.todoTitle}"/></a>
-                                <form:form action="${todosUrl}/${todo.todoId}" cssStyle="display: inline-block;">
-                                    <button name="finish" class="btn btn-default">Finish</button>
-                                </form:form>
-                            </c:otherwise>
-                        </c:choose>
+        <table id="todoList" class="table table-hover">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Operations</th>
+            </tr>
+
+            <c:forEach items="${todos}" var="todo" varStatus="rowStatus">
+                <tr>
+                    <td>
+                        <c:out value="${rowStatus.count}"/>
+                    </td>
+                    <td>
+                        <span class="${todo.finished ? 'strike' : ''}">
+                            <a href="<c:url value='/todos/${todo.todoId}'/>"><c:out
+                                    value="${todo.todoTitle}"/></a>
+                        </span>
+                    </td>
+                    <td>
+                        <c:if test="${not todo.finished}">
+                            <form:form action="${todosUrl}/${todo.todoId}" cssStyle="display: inline-block;">
+                                <button name="finish" class="btn btn-default">Finish</button>
+                            </form:form>
+                        </c:if>
                         <form:form action="${todosUrl}/${todo.todoId}" cssStyle="display: inline-block;">
                             <button name="delete" class="btn btn-default">Delete</button>
                         </form:form>
-                    </li>
-                </c:forEach>
-            </ul>
-        </div>
+                    </td>
+                </tr>
+            </c:forEach>
+
+        </table>
 
     </c:if>
 
