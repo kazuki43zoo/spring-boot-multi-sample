@@ -16,7 +16,7 @@ spring:
 security:
   basic:
     enabled: false
-  ignored: /webjars/**
+  ignored: /css/**,/js/**,/images/**,/**/favicon.ico,/webjars/**
 
 logging:
   level:
