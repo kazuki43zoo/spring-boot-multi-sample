@@ -26,7 +26,7 @@ public class HomeTests {
 
     @Test
     public void home() throws IOException {
-    	try(WebClient webClient = new WebClient(BrowserVersion.FIREFOX_38)){
+        try (WebClient webClient = new WebClient(BrowserVersion.FIREFOX_38)) {
             HtmlPage page = webClient.getPage(new URL(documentRootUrl));
 
             assertThat(page.getElementById("message").asText(), is("Hello API Client !!"));
