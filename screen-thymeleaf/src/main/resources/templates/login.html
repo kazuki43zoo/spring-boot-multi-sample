@@ -20,10 +20,10 @@
 
     <h1 id="message" th:text="#{screen.login}">Login Page!!</h1>
 
-    <div class="alert alert-danger" role="alert" th:if="${param.containsKey('error')}">
+    <div class="alert alert-danger" role="alert" th:if="${param.error}">
         <span th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.localizedMessage}">Bad Credential</span>
     </div>
-    <div class="alert alert-success" role="alert" th:if="${param.containsKey('logout')}">
+    <div class="alert alert-success" role="alert" th:if="${param.logout}">
         <span>Logout was succeed</span>
     </div>
 
