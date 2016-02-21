@@ -1,7 +1,7 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -9,8 +9,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Home</title>
-    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/3.3.6/css/bootstrap.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>" type="text/css"/>
+    <spring:theme var="themeStyleSheet" code="styleSheet"/>
+    <link rel="stylesheet" href="<c:url value='${themeStyleSheet}'/>" type="text/css"/>
 </head>
 
 <body>

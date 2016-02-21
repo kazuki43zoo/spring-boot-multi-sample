@@ -1,3 +1,4 @@
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -7,8 +8,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Todo List</title>
-    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>" type="text/css">
     <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/3.3.6/css/bootstrap.css'/>" type="text/css"/>
+    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>" type="text/css"/>
+    <spring:theme var="themeStyleSheet" code="styleSheet"/>
+    <link rel="stylesheet" href="<c:url value='${themeStyleSheet}'/>" type="text/css"/>
 </head>
 <body>
 
@@ -35,12 +38,12 @@
                         <c:choose>
                             <c:when test="${todo.finished}">
                                 <span class="strike">
-                                    <a href="<c:url value='${todosUrl}/${todo.todoId}'/>"><c:out
+                                    <a href="<c:url value='/todos/${todo.todoId}'/>"><c:out
                                             value="${todo.todoTitle}"/></a>
                                 </span>
                             </c:when>
                             <c:otherwise>
-                                <a href="<c:url value='${todosUrl}/${todo.todoId}'/>"><c:out
+                                <a href="<c:url value='/todos/${todo.todoId}'/>"><c:out
                                         value="${todo.todoTitle}"/></a>
                                 <form:form action="${todosUrl}/${todo.todoId}" cssStyle="display: inline-block;">
                                     <button name="finish" class="btn btn-default">Finish</button>
