@@ -7,6 +7,16 @@ spring:
     include: mybatis
   thymeleaf:
     cache: false
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+
+security:
+  basic:
+    enabled: false
+  ignored: /webjars/**
 
 logging:
   level:

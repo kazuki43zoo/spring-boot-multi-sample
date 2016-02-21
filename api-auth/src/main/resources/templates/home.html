@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css" type="text/css"
+          th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.css}"/>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="message" th:text="#{screen.welcome}">Welcome!!</h1>
+
+    <hr/>
+    <form action="login.html" method="post" style="display: inline-block;"
+          th:action="@{/logout}" sec:authorize="isAuthenticated()">
+        <button class="btn btn-default">Logout</button>
+    </form>
+    <a href="login.html" th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-default">Login</a>
+
+</div>
+</body>
+
+</html>
