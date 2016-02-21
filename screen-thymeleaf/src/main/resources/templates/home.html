@@ -22,11 +22,11 @@
     <a href="todo/list.html" th:href="@{/todos}" class="btn btn-default">Todo List</a>
 
     <hr/>
-    <form method="post" style="display: inline-block;"
+    <form action="login.html" method="post" style="display: inline-block;"
           th:action="@{/logout}" sec:authorize="isAuthenticated()">
         <button class="btn btn-default">Logout</button>
     </form>
-    <a th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-default">Login</a>
+    <a href="login.html" th:href="@{/login}" sec:authorize="!isAuthenticated()" class="btn btn-default">Login</a>
 
 </div>
 </body>
