@@ -1,2 +1,2 @@
 security:
-  ignored: /webjars/**,/*.css
+  ignored: /css/**,/js/**,/images/**,/**/favicon.ico,/webjars/**
