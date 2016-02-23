@@ -18,27 +18,44 @@
 
     <h1>Todo Detail</h1>
 
-    <div id="todoDetail">
-        <div>
-            <span>Title</span>:<span th:text="${todo.todoTitle}">Create Sample Application</span>
+    <div id="todoDetail" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Title</label>
+
+            <div class="col-sm-10"><p class="form-control-static" th:text="${todo.todoTitle}">Create Sample
+                Application</p></div>
         </div>
-        <div>
-            <span>finished</span>:<span th:text="${todo.finished ? 'Yes' : 'No'}">No</span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Finished</label>
+
+            <div class="col-sm-10"><p class="form-control-static" th:text="${todo.finished ? 'Yes' : 'No'}">No</p></div>
         </div>
-        <div>
-            <span>Deadline Date</span>:<span th:text="${todo.deadlineDate != null ? todo.deadlineDate : '-'}">-</span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Deadline Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static"
+                                      th:text="${todo.deadlineDate != null ? todo.deadlineDate : '-'}">-</p></div>
         </div>
-        <div>
-            <span>Create Date</span>:<span th:text="${todo.createdAt}">2016-02-14T12:51:03.058</span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Create Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static" th:text="${todo.createdAt}">
+                2016-02-14T12:51:03.058</p></div>
         </div>
-        <form action="list.html" method="post" style="display: inline-block;"
-              th:action="@{/todos/{todoId}(todoId=${todo.todoId})}" th:if="${not todo.finished}">
-            <button name="finish" class="btn btn-default">Finish</button>
-        </form>
-        <form action="list.html" method="post" style="display: inline-block;"
-              th:action="@{/todos/{todoId}(todoId=${todo.todoId})}">
-            <button name="delete" class="btn btn-default">Delete</button>
-        </form>
+        <div class="form-group">
+            <span class="col-sm-2"></span>
+
+            <div class="col-sm-10">
+                <form action="list.html" method="post" style="display: inline-block;"
+                      th:action="@{/todos/{todoId}(todoId=${todo.todoId})}" th:if="${not todo.finished}">
+                    <button name="finish" class="btn btn-default">Finish</button>
+                </form>
+                <form action="list.html" method="post" style="display: inline-block;"
+                      th:action="@{/todos/{todoId}(todoId=${todo.todoId})}">
+                    <button name="delete" class="btn btn-default">Delete</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <hr/>

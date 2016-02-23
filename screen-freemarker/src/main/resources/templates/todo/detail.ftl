@@ -22,30 +22,43 @@
     <h1>Todo Detail</h1>
 
 
-    <div id="todoDetail">
-        <div>
-            <span>Title</span>:<span>${todo.todoTitle}</span>
-        </div>
-        <div>
-            <span>finished</span>:<span>${todo.finished?string('Yes','No')}</span>
-        </div>
-        <div>
-            <span>Deadline Date</span>:<span>${todo.deadlineDate!'-'}</span>
-        </div>
-        <div>
-            <span>Create Date</span>:<span>${todo.createdAt}</span>
-        </div>
-        <#if !todo.finished>
-            <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post" style="display: inline-block;">
-                <button name="finish" class="btn btn-default">Finish</button>
-                <@sec.csrfInput />
-            </form>
-        </#if>
-        <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post" style="display: inline-block;">
-            <button name="delete" class="btn btn-default">Delete</button>
-            <@sec.csrfInput />
-        </form>
+    <div id="todoDetail" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Title</label>
 
+            <div class="col-sm-10"><p class="form-control-static">${todo.todoTitle}</p></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Finished</label>
+
+            <div class="col-sm-10"><p class="form-control-static">${todo.finished?string('Yes','No')}</p></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Deadline Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static">${todo.deadlineDate!'-'}</p></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Create Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static">${todo.createdAt}</p></div>
+        </div>
+        <div class="form-group">
+            <span class="col-sm-2"></span>
+
+            <div class="col-sm-10">
+                <#if !todo.finished>
+                    <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post" style="display: inline-block;">
+                        <button name="finish" class="btn btn-default">Finish</button>
+                        <@sec.csrfInput />
+                    </form>
+                </#if>
+                <form action="<@spring.url '/todos/${todo.todoId}'/>" method="post" style="display: inline-block;">
+                    <button name="delete" class="btn btn-default">Delete</button>
+                    <@sec.csrfInput />
+                </form>
+            </div>
+        </div>
     </div>
 
     <hr/>

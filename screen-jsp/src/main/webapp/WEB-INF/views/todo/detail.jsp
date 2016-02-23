@@ -19,29 +19,45 @@
 
     <h1>Todo Detail</h1>
 
-    <div id="todoDetail">
+    <div id="todoDetail" class="form-horizontal">
         <c:url value='/todos/${todo.todoId}' var="todoUrl"/>
-        <div>
-            <span>Title</span>:<span><c:out value="${todo.todoTitle}"/></span>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Title</label>
+
+            <div class="col-sm-10"><p class="form-control-static"><c:out value="${todo.todoTitle}"/></p></div>
         </div>
-        <div>
-            <span>finished</span>:<span><c:out value="${todo.finished ? 'Yes' : 'No'}"/></span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Finished</label>
+
+            <div class="col-sm-10"><p class="form-control-static"><c:out value="${todo.finished ? 'Yes' : 'No'}"/></p>
+            </div>
         </div>
-        <div>
-            <span>Deadline Date</span>:<span><c:out
-                value="${not empty todo.deadlineDate ? todo.deadlineDate : '-'}"/></span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Deadline Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static"><c:out
+                    value="${not empty todo.deadlineDate ? todo.deadlineDate : '-'}"/></p></div>
         </div>
-        <div>
-            <span>Create Date</span>:<span><c:out value="${todo.createdAt}"/></span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Create Date</label>
+
+            <div class="col-sm-10"><p class="form-control-static"><c:out value="${todo.createdAt}"/></p></div>
         </div>
-        <c:if test="${not todo.finished}">
-            <form:form action="${todoUrl}" style="display: inline-block;">
-                <button name="finish" class="btn btn-default">Finish</button>
-            </form:form>
-        </c:if>
-        <form:form action="${todoUrl}" style="display: inline-block;">
-            <button name="delete" class="btn btn-default">Delete</button>
-        </form:form>
+        <div class="form-group">
+            <span class="col-sm-2"></span>
+
+            <div class="col-sm-10">
+                <c:if test="${not todo.finished}">
+                    <form:form action="${todoUrl}" style="display: inline-block;">
+                        <button name="finish" class="btn btn-default">Finish</button>
+                    </form:form>
+                </c:if>
+                <form:form action="${todoUrl}" style="display: inline-block;">
+                    <button name="delete" class="btn btn-default">Delete</button>
+                </form:form>
+            </div>
+        </div>
 
     </div>
 
