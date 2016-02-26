@@ -1,7 +1,7 @@
 server:
   port: 10000
   context-path: /db
-  context-parameters.db.url: jdbc:h2:~/db/spring-boot-multi-sample;DB_CLOSE_ON_EXIT=FALSE
+  context-parameters.db.url: jdbc:h2:~/db/spring-boot-multi-sample;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM 'classpath:schema.sql'\;RUNSCRIPT FROM 'classpath:data.sql'
   context-parameters.db.user: sa
   context-parameters.db.password:
   context-parameters.db.tcpServer: -tcpAllowOthers -tcpPort 10001
@@ -12,4 +12,3 @@ spring:
   h2:
     console:
       enabled: true
-
