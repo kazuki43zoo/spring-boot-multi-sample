@@ -1,0 +1,5 @@
+
+spring:
+  datasource:
+    schema: classpath:schema.sql,classpath:BOOT-INF/classes/schema.sql
+    data: classpath:data.sql,classpath:BOOT-INF/classes/schema.sql
