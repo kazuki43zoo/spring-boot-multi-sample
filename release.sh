@@ -43,7 +43,7 @@ chmod 500 services/api-auth-${VERSION}.jar
 chmod 500 services/api-resource-${VERSION}.jar
 chmod 500 services/api-client-${VERSION}.jar
 
-# replace link
+# register services
 sudo ln -f -s ${CURRENT_DIR}/services/database-${VERSION}.jar /etc/init.d/boot-db
 sudo ln -f -s ${CURRENT_DIR}/services/screen-thymeleaf-${VERSION}.jar /etc/init.d/boot-scr-t
 sudo ln -f -s ${CURRENT_DIR}/services/screen-freemarker-${VERSION}.jar /etc/init.d/boot-scr-f
@@ -51,6 +51,15 @@ sudo ln -f -s ${CURRENT_DIR}/services/screen-jsp-${VERSION}.war /etc/init.d/boot
 sudo ln -f -s ${CURRENT_DIR}/services/api-auth-${VERSION}.jar /etc/init.d/boot-api-a
 sudo ln -f -s ${CURRENT_DIR}/services/api-resource-${VERSION}.jar /etc/init.d/boot-api-r
 sudo ln -f -s ${CURRENT_DIR}/services/api-client-${VERSION}.jar /etc/init.d/boot-api-c
+
+# setting auto-boot
+sudo chkconfig --add boot-db
+sudo chkconfig --add boot-scr-t
+sudo chkconfig --add boot-scr-f
+sudo chkconfig --add boot-scr-j
+sudo chkconfig --add boot-api-a
+sudo chkconfig --add boot-api-r
+sudo chkconfig --add boot-api-c
 
 # start services
 sudo service boot-db start
