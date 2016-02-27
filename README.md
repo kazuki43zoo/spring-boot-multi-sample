@@ -219,6 +219,25 @@ $ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
 -r-x------ 1 ec2-user ec2-user 27123853  2月 27 15:08 screen-thymeleaf.jar
 ```
 
+##### Set the max memory setting into JAVA_OPTS
+
+In this application, set the max memory at `*.conf`.
+
+```conf
+JAVA_OPTS=-Xmx128M
+```
+
+##### Override configuration for EC2 instance
+
+In this application, override the `user-authorization-uri` of OAuth 2.0 client setting at `application-default.yml`.
+
+```yml
+security:
+  oauth2:
+    client:
+      user-authorization-uri: http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/api-a/oauth/authorize
+```
+
 #### How to register a service
  
 it used the `init.d`.
