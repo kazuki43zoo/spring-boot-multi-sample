@@ -37,7 +37,7 @@ cp api-client/target/api-client-${VERSION}.jar ${HOME}/apps/${VERSION}/api-clien
 chmod 500 ${HOME}/apps/${VERSION}/*.*ar
 
 # copy conf files to deploy dir
-cp service-config/*.conf {HOME}/apps/${VERSION}/.
+cp service-config/*.conf ${HOME}/apps/${VERSION}/.
 
 # register services
 sudo ln -f -s ${HOME}/apps/${VERSION}/database.jar /etc/init.d/boot-db
