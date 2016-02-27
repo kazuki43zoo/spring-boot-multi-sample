@@ -195,7 +195,7 @@ lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-scr-j -> /home/ec2-use
 lrwxrwxrwx 1 root root 55  2月 27 15:08 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
 ```
 
-Register service using following command.
+Register a service using following command.
 
 ```bash
 $ sudo ln -f -s ${HOME}/apps/${VERSION}/{artifact} /etc/init.d/{service-name}
