@@ -13,10 +13,10 @@ sudo service boot-db stop
 git pull
 
 # get artifact version
-VERSION=`mvn clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
+VERSION=`./mvnw clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
 
 # install artifacts
-mvn -U install
+./mvnw -U install
 buildResult=$?
 if test ${buildResult} -ne 0 ; then
     echo "[ERROR] Failed a build."
