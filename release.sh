@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# pull latest version
-git pull
-
-# get artifact version
-VERSION=`mvn clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
-
 # stop services
 sudo service boot-api-c stop
 sudo service boot-api-r stop
@@ -14,6 +8,12 @@ sudo service boot-scr-j stop
 sudo service boot-scr-f stop
 sudo service boot-scr-t stop
 sudo service boot-db stop
+
+# pull latest version
+git pull
+
+# get artifact version
+VERSION=`mvn clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
 
 # install artifacts
 mvn -U install
