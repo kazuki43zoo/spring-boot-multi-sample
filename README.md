@@ -158,8 +158,8 @@ It used the [release-aws.sh](https://github.com/kazuki43zoo/spring-boot-multi-sa
 > Note: **Preconditions**
 >
 > * Installed the Git
-> * Installed the Apache
 > * Installed the OpenJDK 8
+> * Installed the Apache
 
 #### How to install the Git
 
