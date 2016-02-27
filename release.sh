@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+git pull
+
 # get artifact version
 VERSION=`mvn clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
+CURRENT_DIR=`pwd`
 
 # install artifacts
 mvn -U install
@@ -30,11 +33,11 @@ chmod 500 services/api-resource-${VERSION}.jar
 chmod 500 services/api-client-${VERSION}.jar
 
 # replace link
-sudo ln -F -s services/database-${VERSION}.jar /etc/init.d/boot-db
-sudo ln -F -s services/screen-thymeleaf-${VERSION}.jar /etc/init.d/boot-screen-t
-sudo ln -F -s services/screen-freemarker-${VERSION}.jar /etc/init.d/boot-screen-f
-sudo ln -F -s services/screen-jsp-${VERSION}.war /etc/init.d/boot-screen-j
-sudo ln -F -s services/api-auth-${VERSION}.jar /etc/init.d/boot-api-a
-sudo ln -F -s services/api-resource-${VERSION}.jar /etc/init.d/boot-api-r
-sudo ln -F -s services/api-client-${VERSION}.jar /etc/init.d/boot-api-c
+sudo ln -F -s ${CURRENT_DIR}/services/database-${VERSION}.jar /etc/init.d/boot-db
+sudo ln -F -s ${CURRENT_DIR}/services/screen-thymeleaf-${VERSION}.jar /etc/init.d/boot-screen-t
+sudo ln -F -s ${CURRENT_DIR}/services/screen-freemarker-${VERSION}.jar /etc/init.d/boot-screen-f
+sudo ln -F -s ${CURRENT_DIR}/services/screen-jsp-${VERSION}.war /etc/init.d/boot-screen-j
+sudo ln -F -s ${CURRENT_DIR}/services/api-auth-${VERSION}.jar /etc/init.d/boot-api-a
+sudo ln -F -s ${CURRENT_DIR}/services/api-resource-${VERSION}.jar /etc/init.d/boot-api-r
+sudo ln -F -s ${CURRENT_DIR}/services/api-client-${VERSION}.jar /etc/init.d/boot-api-c
 
