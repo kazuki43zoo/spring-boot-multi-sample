@@ -66,3 +66,41 @@ Structure of this applications are following.
 | / | Redirect to H2 Console Page | |
 | /h2-console | H2 Console Page | |
 
+## Appendix
+
+### Apache Reverse Proxy Settings
+
+#### `/etc/httpd/conf/httpd.conf`
+
+```conf
+
+# ...
+
+ProxyRequests Off
+
+<Proxy *>
+    Order deny,allow
+    Allow from all
+</Proxy>
+
+ProxyPass /db http://localhost:10000/db
+ProxyPassReverse /db http://localhost:10000/db
+
+ProxyPass /api-a http://localhost:9080/api-a
+ProxyPassReverse /api-a http://localhost:9080/api-a
+
+ProxyPass /api-r http://localhost:9081/api-r
+ProxyPassReverse /api-r http://localhost:9081/api-r
+
+ProxyPass /api-c http://localhost:9082/api-c
+ProxyPassReverse /api-c http://localhost:9082/api-c
+
+ProxyPass /scr-t http://localhost:8081/scr-t
+ProxyPassReverse /scr-t http://localhost:8081/scr-t
+
+ProxyPass /scr-f http://localhost:8082/scr-f
+ProxyPassReverse /scr-f http://localhost:8082/scr-f
+
+ProxyPass /scr-j http://localhost:8083/scr-j
+ProxyPassReverse /scr-j http://localhost:8083/scr-j
+```
