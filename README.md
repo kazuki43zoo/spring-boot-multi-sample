@@ -151,9 +151,48 @@ $ fg
 
 This sample application has been published using [EC2 instance of AWS ](http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/).
 
-#### How to release
+### How to release to EC2 instance of AWS
 
 It used the [release-aws.sh](https://github.com/kazuki43zoo/spring-boot-multi-sample/blob/master/release-aws.sh).
+
+> Note: **Preconditions**
+>
+> * Installed the Git
+> * Installed the Apache
+> * Installed the OpenJDK 8
+
+#### How to install the Git
+
+```bash
+$ sudo yum -y install git
+```
+
+#### How to install the OpenJDK 8
+
+```bash
+$ sudo yum -y install java-1.8.0-openjdk-devel
+$ sudo alternatives --config java
+2 プログラムがあり 'java' を提供します。
+
+  選択       コマンド
+-----------------------------------------------
+*+ 1           /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+   2           /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+
+Enter を押して現在の選択 [+] を保持するか、選択番号を入力します:2
+$ java -version
+openjdk version "1.8.0_71"
+OpenJDK Runtime Environment (build 1.8.0_71-b15)
+OpenJDK 64-Bit Server VM (build 25.71-b15, mixed mode)
+```
+
+#### How to install the Apache
+
+```bash
+$ sudo yum install httpd
+$ sudo chkconfig httpd on
+$ sudo service httpd start
+```
 
 #### How to manage a fully executable jar/war and configuration files
 
@@ -237,6 +276,8 @@ $ sudo chkconfig --add boot-db
 ```
 
 ### Apache Reverse Proxy Settings
+
+This sample application use a Apache Reverse Proxy on EC2 instance of AWS.
 
 #### `/etc/httpd/conf/httpd.conf`
 
