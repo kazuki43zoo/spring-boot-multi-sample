@@ -40,7 +40,7 @@ $ ./mvnw install
 ### Run applications
 
 Run applications as background process using `java -jar` commands.
-(or run application as foreground process on other console without `&`)
+(or run application as foreground process on different console without `&`)
 
 ```bash
 $ java -jar database/target/database-1.0.0-SNAPSHOT.jar &
@@ -70,7 +70,7 @@ $ ./mvnw -f screen-jsp/pom.xml spring-boot:run &
 
 URLs refer to [Modules & Context Paths](#modules--context-paths).
 
-If you need login, you can use following user.
+If you need login, you can use embedded user as follows.
 
 | Username | Password | ROLE |
 | -------- | -------- | ---- |
@@ -93,11 +93,13 @@ $ fg
 
 ## Modules & Context Paths
 
+
+
 | Type | Module | Context Path | Description | Remarks |
 | :--: | :----- | ------------ | ----------- | ------- |
-| API Server<br>(OAuth 2.0)  | api-client        | /api-c | OAuth 2.0 Client Application (Screen Application)<br>[http://localhost:9082/api-c](http://localhost:9082/api-c) | |
+| API Server<br>(OAuth 2.0)  | api-auth          | /api-a | OAuth 2.0 Authorization Server (Resource Owner Authentication & Grant access authorities to resource)<br>[http://localhost:9080/api-a](http://localhost:9080/api-a) | |
 |                            | api-resource      | /api-r | OAuth 2.0 Resource Server (RESTful Web Services)<br>[http://localhost:9081/api-r](http://localhost:9081/api-r) | |
-|                            | api-auth          | /api-a | OAuth 2.0 Authorization Server (Resource Owner Authentication & Grant access authorities to resource)<br>[http://localhost:9080/api-a](http://localhost:9080/api-a) | |
+|                            | api-client        | /api-c | OAuth 2.0 Client Application (Screen Application)<br>[http://localhost:9082/api-c](http://localhost:9082/api-c) | |
 | Screen AP Server           | screen-thymeleaf  | /scr-t | Screen Application using Thymeleaf as view technology<br>[http://localhost:8081/scr-t](http://localhost:8081/scr-t) | |
 |                            | screen-freemarker | /scr-f | Screen Application using FreeMarker as view technology<br>[http://localhost:8082/scr-f](http://localhost:8082/scr-f) | |
 |                            | screen-jsp        | /scr-j | Screen Application using JSP as view technology<br>[http://localhost:8083/scr-j](http://localhost:8083/scr-j) | |
@@ -144,6 +146,12 @@ $ fg
 
 
 ## Appendix
+
+### Run on EC2 instance of AWS
+
+This sample application has been published using [EC2 instance of AWS ](http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/).
+
+
 
 ### Apache Reverse Proxy Settings
 
