@@ -65,7 +65,7 @@ sudo chkconfig --add boot-api-c
 sudo service boot-db start
 # sudo service boot-scr-t start
 # sudo service boot-scr-f start
-sudo service boot-scr-j start
+# sudo service boot-scr-j start
 sudo service boot-api-a start
 sudo service boot-api-r start
 sudo service boot-api-c start
