@@ -281,6 +281,8 @@ This sample application use a Apache Reverse Proxy on EC2 instance of AWS.
 
 #### `/etc/httpd/conf/httpd.conf`
 
+Add settings for reverse proxy.
+
 ```conf
 # ...
 
