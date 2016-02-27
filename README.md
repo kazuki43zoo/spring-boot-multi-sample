@@ -151,7 +151,90 @@ $ fg
 
 This sample application has been published using [EC2 instance of AWS ](http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/).
 
+#### How to release
 
+It used the [release-aws.sh](https://github.com/kazuki43zoo/spring-boot-multi-sample/blob/master/release-aws.sh).
+
+#### How to manage a fully executable jar/war and configuration files
+
+It managed in a `${HOME}/apps/${VERSION}` directory.
+
+e.g.)
+```bash
+[ec2-user@ip-xxx-xx-xx-xx apps]$ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
+合計 168768
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-auth.conf
+-r-x------ 1 ec2-user ec2-user 31405284  2月 27 15:08 api-auth.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-client.conf
+-r-x------ 1 ec2-user ec2-user 28951479  2月 27 15:08 api-client.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-resource.conf
+-r-x------ 1 ec2-user ec2-user 23847340  2月 27 15:08 api-resource.jar
+-rw-rw-r-- 1 ec2-user ec2-user      146  2月 27 10:21 application-default.yml
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 database.conf
+-r-x------ 1 ec2-user ec2-user 15647599  2月 27 15:08 database.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-freemarker.conf
+-r-x------ 1 ec2-user ec2-user 22004744  2月 27 15:08 screen-freemarker.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-jsp.conf
+-r-x------ 1 ec2-user ec2-user 23785136  2月 27 15:08 screen-jsp.war
+-rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-thymeleaf.conf
+-r-x------ 1 ec2-user ec2-user 27123853  2月 27 15:08 screen-thymeleaf.jar
+```
+
+#### How to register a service
+ 
+it used the `init.d`.
+
+```bash
+[ec2-user@ip-xxx-xx-xx-xx apps]$ ls -l /etc/init.d/boot*
+lrwxrwxrwx 1 root root 47  2月 27 15:08 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
+lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
+lrwxrwxrwx 1 root root 51  2月 27 15:08 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
+lrwxrwxrwx 1 root root 47  2月 27 15:08 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
+lrwxrwxrwx 1 root root 56  2月 27 15:08 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
+lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.war
+lrwxrwxrwx 1 root root 55  2月 27 15:08 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
+```
+
+Register service using following command.
+
+```bash
+$ sudo ln -f -s ${HOME}/apps/${VERSION}/{artifact} /etc/init.d/{service-name}
+```
+
+e.g)
+
+```bash
+$ sudo ln -f -s ${HOME}/apps/1.0.0-SNAPSHOT/database.jar /etc/init.d/boot-db
+```
+
+#### How to control a service manually
+
+It use the `service` command.
+
+```bash
+$ sudo service {service-name} {option[start|stop|restart|force-reload|status|run]}
+```
+
+e.g)
+
+```bash
+$ sudo service boot-database start
+```
+
+
+#### How to startup a service by automatically
+
+It used the `chkconfig` command.
+
+```bash
+$ sudo chkconfig --add {service-name}
+```
+
+e.g.)
+
+```bash
+$ sudo chkconfig --add boot-db
+```
 
 ### Apache Reverse Proxy Settings
 
