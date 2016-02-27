@@ -73,7 +73,6 @@ Structure of this applications are following.
 #### `/etc/httpd/conf/httpd.conf`
 
 ```conf
-
 # ...
 
 ProxyRequests Off
@@ -88,9 +87,6 @@ ProxyPassReverse /db http://localhost:10000/db
 
 ProxyPass /api-a http://localhost:9080/api-a
 ProxyPassReverse /api-a http://localhost:9080/api-a
-
-ProxyPass /api-r http://localhost:9081/api-r
-ProxyPassReverse /api-r http://localhost:9081/api-r
 
 ProxyPass /api-c http://localhost:9082/api-c
 ProxyPassReverse /api-c http://localhost:9082/api-c
