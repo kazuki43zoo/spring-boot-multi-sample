@@ -53,10 +53,19 @@ sudo ln -f -s ${CURRENT_DIR}/services/api-resource-${VERSION}.jar /etc/init.d/bo
 sudo ln -f -s ${CURRENT_DIR}/services/api-client-${VERSION}.jar /etc/init.d/boot-api-c
 
 # setting auto-boot
+sudo chkconfig --del boot-db
+sudo chkconfig --del boot-scr-t
+sudo chkconfig --del boot-scr-f
+sudo chkconfig --del boot-scr-j
+sudo chkconfig --del boot-api-a
+sudo chkconfig --del boot-api-r
+sudo chkconfig --del boot-api-c
+
+# setting auto-boot
 sudo chkconfig --add boot-db
-sudo chkconfig --add boot-scr-t
-sudo chkconfig --add boot-scr-f
-sudo chkconfig --add boot-scr-j
+# sudo chkconfig --add boot-scr-t
+#sudo chkconfig --add boot-scr-f
+#sudo chkconfig --add boot-scr-j
 sudo chkconfig --add boot-api-a
 sudo chkconfig --add boot-api-r
 sudo chkconfig --add boot-api-c
