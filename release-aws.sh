@@ -37,7 +37,10 @@ cp api-client/target/api-client-${VERSION}.jar ${HOME}/apps/${VERSION}/api-clien
 chmod 500 ${HOME}/apps/${VERSION}/*.*ar
 
 # copy conf files to deploy dir
-cp service-config/*.conf ${HOME}/apps/${VERSION}/.
+cp service-conf/*.conf ${HOME}/apps/${VERSION}/.
+
+# copy static resource files (html, etc..)
+sudo cp -R www/html/* /var/www/html/.
 
 # register services
 sudo ln -f -s ${HOME}/apps/${VERSION}/database.jar /etc/init.d/boot-db
