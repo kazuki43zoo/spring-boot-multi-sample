@@ -10,6 +10,9 @@ public class ApiClientApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ApiClientApplication.class, args);
+        System.out.println(Runtime.getRuntime().totalMemory());
+        System.out.println(Runtime.getRuntime().freeMemory());
+
     }
 
 }
