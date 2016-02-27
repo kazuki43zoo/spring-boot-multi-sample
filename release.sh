@@ -16,12 +16,12 @@ if test ${buildResult} -ne 0 ; then
 fi
 
 # stop services
-sudo service boot-db boot-api-c stop
-sudo service boot-db boot-api-r stop
-sudo service boot-db boot-api-a stop
-sudo service boot-db boot-scr-j stop
-sudo service boot-db boot-scr-f stop
-sudo service boot-db boot-scr-t stop
+sudo service boot-api-c stop
+sudo service boot-api-r stop
+sudo service boot-api-a stop
+sudo service boot-scr-j stop
+sudo service boot-scr-f stop
+sudo service boot-scr-t stop
 sudo service boot-db stop
 
 # copy artifacts to deploy dir
@@ -54,9 +54,9 @@ sudo ln -f -s ${CURRENT_DIR}/services/api-client-${VERSION}.jar /etc/init.d/boot
 
 # start services
 sudo service boot-db start
-sudo service boot-db boot-scr-t start
-sudo service boot-db boot-scr-f start
-sudo service boot-db boot-scr-j start
-sudo service boot-db boot-api-a start
-sudo service boot-db boot-api-r start
-sudo service boot-db boot-api-c start
+sudo service boot-scr-t start
+sudo service boot-scr-f start
+sudo service boot-scr-j start
+sudo service boot-api-a start
+sudo service boot-api-r start
+sudo service boot-api-c start
