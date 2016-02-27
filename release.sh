@@ -7,14 +7,6 @@ git pull
 VERSION=`mvn clean | grep 'Building.*Samples [0-9].*' | sed -e 's/^.*Building.*Samples //g'`
 CURRENT_DIR=`pwd`
 
-# install artifacts
-mvn -U install
-buildResult=$?
-if test ${buildResult} -ne 0 ; then
-    echo "[ERROR] Failed a build."
-    exit ${buildResult}
-fi
-
 # stop services
 sudo service boot-api-c stop
 sudo service boot-api-r stop
@@ -23,6 +15,14 @@ sudo service boot-scr-j stop
 sudo service boot-scr-f stop
 sudo service boot-scr-t stop
 sudo service boot-db stop
+
+# install artifacts
+mvn -U install
+buildResult=$?
+if test ${buildResult} -ne 0 ; then
+    echo "[ERROR] Failed a build."
+    exit ${buildResult}
+fi
 
 # copy artifacts to deploy dir
 chmod u+w services/*-${VERSION}.*
