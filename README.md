@@ -200,7 +200,7 @@ It managed in a `${HOME}/apps/${VERSION}` directory.
 
 e.g.)
 ```bash
-[ec2-user@ip-xxx-xx-xx-xx apps]$ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
+$ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
 合計 168768
 -rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-auth.conf
 -r-x------ 1 ec2-user ec2-user 31405284  2月 27 15:08 api-auth.jar
@@ -224,7 +224,7 @@ e.g.)
 it used the `init.d`.
 
 ```bash
-[ec2-user@ip-xxx-xx-xx-xx apps]$ ls -l /etc/init.d/boot*
+$ ls -l /etc/init.d/boot*
 lrwxrwxrwx 1 root root 47  2月 27 15:08 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
 lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
 lrwxrwxrwx 1 root root 51  2月 27 15:08 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
