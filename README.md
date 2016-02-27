@@ -315,6 +315,8 @@ ProxyPassReverse /scr-j http://localhost:8083/scr-j
 
 ### Spring Boot Startup Script in Fully executable jar
 
+A fully executable jar include a script file as follow.
+
 ```bash
 #!/bin/bash
 #
