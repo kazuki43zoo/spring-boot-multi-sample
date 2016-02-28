@@ -140,9 +140,9 @@ $ fg
 | / | Redirect to H2 Console Page | |
 | /h2-console | H2 Console Page | |
 
-## Appendix
+# Appendix
 
-### Run on EC2 instance of AWS
+## Run on EC2 instance of AWS
 
 This sample application has been published using [EC2 instance of AWS ](http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/).
 
@@ -290,11 +290,11 @@ e.g.)
 $ sudo chkconfig --add boot-db
 ```
 
-### Apache Reverse Proxy Settings
+## Apache Reverse Proxy Settings
 
 This sample application use a Apache Reverse Proxy on EC2 instance of AWS.
 
-#### `/etc/httpd/conf/httpd.conf`
+### `/etc/httpd/conf/httpd.conf`
 
 Add settings for reverse proxy.
 
@@ -328,7 +328,7 @@ ProxyPassReverse /scr-j http://localhost:8083/scr-j
 ```
 
 
-### Spring Boot Startup Script in Fully executable jar
+## Spring Boot Startup Script in Fully executable jar
 
 A fully executable jar include a startup script file as follow.
 
