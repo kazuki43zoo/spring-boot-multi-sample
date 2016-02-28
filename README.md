@@ -294,9 +294,7 @@ $ sudo chkconfig --add boot-db
 
 This sample application use a Apache Reverse Proxy on EC2 instance of AWS.
 
-### `/etc/httpd/conf/httpd.conf`
-
-Add settings for reverse proxy.
+Add settings for reverse proxy in `/etc/httpd/conf/httpd.conf`.
 
 ```conf
 # ...
