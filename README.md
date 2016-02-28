@@ -3,7 +3,6 @@ Spring Boot Multi Project Samples
 
 [![Build Status](https://travis-ci.org/kazuki43zoo/spring-boot-multi-sample.svg?branch=master)](https://travis-ci.org/kazuki43zoo/spring-boot-multi-sample)
 
-
 ## Overview
 
 Structure of this applications are following.
@@ -52,9 +51,7 @@ $ java -jar screen-freemarker/target/screen-freemarker-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-jsp/target/screen-jsp-1.0.0-SNAPSHOT.war &
 ```
 
-or 
-
-Run application as background process using `spring-boot:run` of `spring-boot-maven-plugin`.
+or run application as background process using `spring-boot:run` of `spring-boot-maven-plugin`.
 
 ```bash
 $ ./mvnw -f database/pom.xml spring-boot:run &
@@ -236,7 +233,7 @@ security:
 
 #### How to register a service
  
-it used the `init.d`.
+It used the `init.d`.
 
 ```bash
 $ ls -l /etc/init.d/boot*
@@ -263,7 +260,7 @@ $ sudo ln -f -s ${HOME}/apps/1.0.0-SNAPSHOT/database.jar /etc/init.d/boot-db
 
 #### How to control a service manually
 
-It use the `service` command.
+It used the `service` command.
 
 ```bash
 $ sudo service {service-name} {option[start|stop|restart|force-reload|status|run]}
@@ -325,6 +322,14 @@ ProxyPass /scr-j http://localhost:8083/scr-j
 ProxyPassReverse /scr-j http://localhost:8083/scr-j
 ```
 
+> Note: **Preconditions**
+>
+> `mod_proxy` and `mod_proxy_http` should be loaded.
+> 
+> ```conf
+> LoadModule proxy_module modules/mod_proxy.so
+> LoadModule proxy_http_module modules/mod_proxy_http.so
+> ```
 
 ## Spring Boot Startup Script in Fully executable jar
 
