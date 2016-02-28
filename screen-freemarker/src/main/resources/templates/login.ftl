@@ -8,7 +8,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title><@spring.message "screen.login"/></title>
+    <title>Login</title>
     <link rel="stylesheet" href="<@spring.url '/webjars/bootstrap/3.3.6/css/bootstrap.css'/>" type="text/css"/>
     <link rel="stylesheet" href="<@spring.url '/css/styles.css'/>" type="text/css"/>
     <#assign themeStyleSheet><@spring.theme 'styleSheet'/></#assign>
