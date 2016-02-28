@@ -1,0 +1,4 @@
+security:
+  oauth2:
+    client:
+      user-authorization-uri: http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/api-a/oauth/authorize
