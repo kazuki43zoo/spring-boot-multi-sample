@@ -211,7 +211,7 @@ total 168768
 -r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
 ```
 
-##### Set into JAVA_OPTS
+##### Set VM options into JAVA_OPTS
 
 In this application, set the max memory at `*.conf`.
 
