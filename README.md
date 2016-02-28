@@ -222,7 +222,7 @@ JAVA_OPTS=-Xmx128M
 
 ##### Override configuration for EC2 instance
 
-In this application, override the `user-authorization-uri` of OAuth 2.0 client setting at `application-default.yml`.
+In this application, override the `user-authorization-uri` of OAuth 2.0 client setting at `${HOME}/apps/${VERSION}/application-default.yml`.
 
 ```yml
 security:
@@ -269,7 +269,7 @@ $ sudo service {service-name} {option[start|stop|restart|force-reload|status|run
 e.g)
 
 ```bash
-$ sudo service boot-database start
+$ sudo service boot-db start
 ```
 
 
