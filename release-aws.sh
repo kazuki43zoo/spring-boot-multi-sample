@@ -44,7 +44,6 @@ echo "[INFO] Release conf files to ${HOME}/apps/${VERSION}"
 cp service-conf/*.conf ${HOME}/apps/${VERSION}/.
 ls -l ${HOME}/apps/${VERSION}/*.conf
 
-# release static resource files (html, etc..)
 echo "[INFO] Release static resource files to /var/www/html/"
 sudo cp -R www/html/* /var/www/html/.
 ls -l /var/www/html/
