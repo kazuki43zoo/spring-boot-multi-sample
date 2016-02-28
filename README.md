@@ -201,7 +201,6 @@ total 168768
 -r-x------ 1 ec2-user ec2-user 28951476 Feb 27 17:03 api-client.jar
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-resource.conf
 -r-x------ 1 ec2-user ec2-user 23847338 Feb 27 17:03 api-resource.jar
--rw-rw-r-- 1 ec2-user ec2-user      146 Feb 27 10:21 application-default.yml
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 database.conf
 -r-x------ 1 ec2-user ec2-user 15647598 Feb 27 17:03 database.jar
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-freemarker.conf
