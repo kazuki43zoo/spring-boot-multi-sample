@@ -41,7 +41,7 @@ $ ./mvnw install
 Run applications as background process using `java -jar` command.
 (or run application as foreground process on different console without `&`)
 
-```bash
+```console
 $ java -jar database/target/database-1.0.0-SNAPSHOT.jar &
 $ java -jar api-auth/target/api-auth-1.0.0-SNAPSHOT.jar &
 $ java -jar api-resource/target/api-resource-1.0.0-SNAPSHOT.jar &
@@ -53,7 +53,7 @@ $ java -jar screen-jsp/target/screen-jsp-1.0.0-SNAPSHOT.war &
 
 or run application as background process using `spring-boot:run` of `spring-boot-maven-plugin`.
 
-```bash
+```console
 $ ./mvnw -f database/pom.xml spring-boot:run &
 $ ./mvnw -f api-auth/pom.xml spring-boot:run &
 $ ./mvnw -f api-resource/pom.xml spring-boot:run &
@@ -81,7 +81,7 @@ If you need login, you can use embedded user as follows.
 
 Move to current job using `fg` command and stop job using "Control + C" for all application.
 
-```bash
+```console
 $ fg
 ./mvnw -f screen-jsp/pom.xml spring-boot:run
 (Type "Control + C")
@@ -155,13 +155,13 @@ It used the [release-aws.sh](https://github.com/kazuki43zoo/spring-boot-multi-sa
 
 #### How to install the Git
 
-```bash
+```console
 $ sudo yum -y install git
 ```
 
 #### How to install the OpenJDK 8
 
-```bash
+```console
 $ sudo yum -y install java-1.8.0-openjdk-devel
 $ sudo alternatives --config java
 
@@ -181,7 +181,7 @@ OpenJDK 64-Bit Server VM (build 25.71-b15, mixed mode)
 
 #### How to install the Apache
 
-```bash
+```console
 $ sudo yum -y install httpd
 $ sudo chkconfig httpd on
 $ sudo service httpd start
@@ -192,7 +192,8 @@ $ sudo service httpd start
 It managed in a `${HOME}/apps/${VERSION}` directory.
 
 e.g.)
-```bash
+
+```console
 $ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
 total 168768
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-auth.conf
@@ -215,13 +216,13 @@ total 168768
 
 In this application, set the max memory at `*.conf`.
 
-```conf
+```bash
 JAVA_OPTS=-Xmx128M
 ```
 
 In this application, override the active profile for AWS at `api-client.conf`.
 
-```conf
+```bash
 JAVA_OPTS="-Xmx128M -Dspring.profiles.active=aws"
 ```
 
@@ -229,7 +230,7 @@ JAVA_OPTS="-Xmx128M -Dspring.profiles.active=aws"
  
 It used the `init.d`.
 
-```bash
+```console
 $ ls -l /etc/init.d/boot*
 lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
 lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
@@ -242,13 +243,13 @@ lrwxrwxrwx 1 root root 55 Feb 27 17:03 /etc/init.d/boot-scr-t -> /home/ec2-user/
 
 Register a service using following command. A fully executable jar include [a startup script](#spring-boot-startup-script-in-fully-executable-jar).
 
-```bash
+```console
 $ sudo ln -f -s ${HOME}/apps/${VERSION}/{artifact} /etc/init.d/{service-name}
 ```
 
 e.g)
 
-```bash
+```console
 $ sudo ln -f -s ${HOME}/apps/1.0.0-SNAPSHOT/database.jar /etc/init.d/boot-db
 ```
 
@@ -256,13 +257,13 @@ $ sudo ln -f -s ${HOME}/apps/1.0.0-SNAPSHOT/database.jar /etc/init.d/boot-db
 
 It used the `service` command.
 
-```bash
+```console
 $ sudo service {service-name} {option[start|stop|restart|force-reload|status|run]}
 ```
 
 e.g)
 
-```bash
+```console
 $ sudo service boot-db start
 ```
 
@@ -271,13 +272,13 @@ $ sudo service boot-db start
 
 It used the `chkconfig` command.
 
-```bash
+```console
 $ sudo chkconfig --add {service-name}
 ```
 
 e.g.)
 
-```bash
+```console
 $ sudo chkconfig --add boot-db
 ```
 
