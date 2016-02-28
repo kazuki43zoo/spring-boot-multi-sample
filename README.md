@@ -212,7 +212,7 @@ total 168768
 -r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
 ```
 
-##### Set the max memory setting into JAVA_OPTS
+##### Set into JAVA_OPTS
 
 In this application, set the max memory at `*.conf`.
 
@@ -220,15 +220,10 @@ In this application, set the max memory at `*.conf`.
 JAVA_OPTS=-Xmx128M
 ```
 
-##### Override configuration for EC2 instance
+In this application, override the active profile for AWS at `api-client.conf`.
 
-In this application, override the `user-authorization-uri` of OAuth 2.0 client setting at `${HOME}/apps/${VERSION}/application-default.yml`.
-
-```yml
-security:
-  oauth2:
-    client:
-      user-authorization-uri: http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/api-a/oauth/authorize
+```conf
+JAVA_OPTS="-Xmx128M -Dspring.profiles.active=aws"
 ```
 
 #### How to register a service

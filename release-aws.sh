@@ -41,7 +41,7 @@ chmod 500 ${HOME}/apps/${VERSION}/*.*ar
 ls -l ${HOME}/apps/${VERSION}/*.*ar
 
 echo "[INFO] Release conf files to ${HOME}/apps/${VERSION}"
-cp service-conf/*.conf ${HOME}/apps/${VERSION}/.
+cp service-conf/aws/*.conf ${HOME}/apps/${VERSION}/.
 ls -l ${HOME}/apps/${VERSION}/*.conf
 
 echo "[INFO] Release static resource files to /var/www/html/"
