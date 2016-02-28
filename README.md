@@ -13,8 +13,8 @@ Structure of this applications are following.
 > Note: **Other modules and directories**
 >
 > * `component`, `component-web`, `domain` and `screen` modules are not Spring Boot Application. These modules provided common components to the Spring Boot Applications.
-> * `service-conf` provide a conf file for OS Service such as `init.d`.
-> * `www` provide web content files for a Web Server such as Apache.
+> * `service-conf` directory provide a conf file for OS Service such as the `init.d`.
+> * `www` directory provide web content files for a Web Server such as the Apache.
 
 ## Getting Started
 
@@ -39,7 +39,7 @@ $ ./mvnw install
 
 ### Run applications
 
-Run applications as background process using `java -jar` commands.
+Run applications as background process using `java -jar` command.
 (or run application as foreground process on different console without `&`)
 
 ```bash
@@ -90,10 +90,7 @@ $ fg
 (Type "Control + C")
 ```
 
-
 ## Modules & Context Paths
-
-
 
 | Type | Module | Context Path | Description | Remarks |
 | :--: | :----- | ------------ | ----------- | ------- |
@@ -108,7 +105,6 @@ $ fg
 | Common<br>Components       | component         | -      | Common components | |
 |                            | component-web     | -      | Common components that depend on web layer (`@WebFilter`, `@WebListener`, etc ...) | |
 |                            | screen            | -      | Application layer components(`@Controller`, `@ControllerAdvice`, Form, etc ...) for screen-xxx modules ... | |
-
 
 ## Application endpoints
 
@@ -144,7 +140,6 @@ $ fg
 | / | Redirect to H2 Console Page | |
 | /h2-console | H2 Console Page | |
 
-
 ## Appendix
 
 ### Run on EC2 instance of AWS
@@ -172,14 +167,15 @@ $ sudo yum -y install git
 ```bash
 $ sudo yum -y install java-1.8.0-openjdk-devel
 $ sudo alternatives --config java
-2 プログラムがあり 'java' を提供します。
 
-  選択       コマンド
+There are 2 programs which provide 'java'.
+
+  Selection    Command
 -----------------------------------------------
 *+ 1           /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
    2           /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
 
-Enter を押して現在の選択 [+] を保持するか、選択番号を入力します:2
+Enter to keep the current selection[+], or type selection number: 2
 $ java -version
 openjdk version "1.8.0_71"
 OpenJDK Runtime Environment (build 1.8.0_71-b15)
@@ -201,22 +197,22 @@ It managed in a `${HOME}/apps/${VERSION}` directory.
 e.g.)
 ```bash
 $ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
-合計 168768
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-auth.conf
--r-x------ 1 ec2-user ec2-user 31405284  2月 27 15:08 api-auth.jar
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-client.conf
--r-x------ 1 ec2-user ec2-user 28951479  2月 27 15:08 api-client.jar
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 api-resource.conf
--r-x------ 1 ec2-user ec2-user 23847340  2月 27 15:08 api-resource.jar
--rw-rw-r-- 1 ec2-user ec2-user      146  2月 27 10:21 application-default.yml
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 database.conf
--r-x------ 1 ec2-user ec2-user 15647599  2月 27 15:08 database.jar
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-freemarker.conf
--r-x------ 1 ec2-user ec2-user 22004744  2月 27 15:08 screen-freemarker.jar
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-jsp.conf
--r-x------ 1 ec2-user ec2-user 23785136  2月 27 15:08 screen-jsp.war
--rw-rw-r-- 1 ec2-user ec2-user       19  2月 27 15:08 screen-thymeleaf.conf
--r-x------ 1 ec2-user ec2-user 27123853  2月 27 15:08 screen-thymeleaf.jar
+total 168768
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-auth.conf
+-r-x------ 1 ec2-user ec2-user 31405282 Feb 27 17:03 api-auth.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-client.conf
+-r-x------ 1 ec2-user ec2-user 28951476 Feb 27 17:03 api-client.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-resource.conf
+-r-x------ 1 ec2-user ec2-user 23847338 Feb 27 17:03 api-resource.jar
+-rw-rw-r-- 1 ec2-user ec2-user      146 Feb 27 10:21 application-default.yml
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 database.conf
+-r-x------ 1 ec2-user ec2-user 15647598 Feb 27 17:03 database.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-freemarker.conf
+-r-x------ 1 ec2-user ec2-user 22004742 Feb 27 17:03 screen-freemarker.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-jsp.conf
+-r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.war
+-rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-thymeleaf.conf
+-r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
 ```
 
 ##### Set the max memory setting into JAVA_OPTS
@@ -244,13 +240,13 @@ it used the `init.d`.
 
 ```bash
 $ ls -l /etc/init.d/boot*
-lrwxrwxrwx 1 root root 47  2月 27 15:08 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
-lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
-lrwxrwxrwx 1 root root 51  2月 27 15:08 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
-lrwxrwxrwx 1 root root 47  2月 27 15:08 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
-lrwxrwxrwx 1 root root 56  2月 27 15:08 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
-lrwxrwxrwx 1 root root 49  2月 27 15:08 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.war
-lrwxrwxrwx 1 root root 55  2月 27 15:08 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
+lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
+lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
+lrwxrwxrwx 1 root root 51 Feb 27 17:03 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
+lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
+lrwxrwxrwx 1 root root 56 Feb 27 17:03 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
+lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.war
+lrwxrwxrwx 1 root root 55 Feb 27 17:03 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
 ```
 
 Register a service using following command.
