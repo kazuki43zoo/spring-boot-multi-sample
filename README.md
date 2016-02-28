@@ -185,7 +185,7 @@ OpenJDK 64-Bit Server VM (build 25.71-b15, mixed mode)
 #### How to install the Apache
 
 ```bash
-$ sudo yum install httpd
+$ sudo yum -y install httpd
 $ sudo chkconfig httpd on
 $ sudo service httpd start
 ```
