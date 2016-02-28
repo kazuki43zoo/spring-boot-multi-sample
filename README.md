@@ -246,7 +246,7 @@ lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-scr-j -> /home/ec2-user/
 lrwxrwxrwx 1 root root 55 Feb 27 17:03 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
 ```
 
-Register a service using following command.
+Register a service using following command. A fully executable jar include [a startup script](#spring-boot-startup-script-in-fully-executable-jar).
 
 ```bash
 $ sudo ln -f -s ${HOME}/apps/${VERSION}/{artifact} /etc/init.d/{service-name}
