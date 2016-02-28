@@ -82,7 +82,7 @@ If you need login, you can use embedded user as follows.
 
 ### Stop applications
 
-Move to current job using `bg` command and stop job using "Control + C" for all application.
+Move to current job using `fg` command and stop job using "Control + C" for all application.
 
 ```bash
 $ fg
