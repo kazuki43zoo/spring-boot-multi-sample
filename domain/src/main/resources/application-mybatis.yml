@@ -8,6 +8,8 @@ mybatis:
 spring:
   datasource:
     tomcat:
+      max-active: 3
       url: jdbc:h2:tcp://localhost:10001/~/db/spring-boot-multi-sample;LOCK_TIMEOUT=10000;
       username: sa
       password:
+

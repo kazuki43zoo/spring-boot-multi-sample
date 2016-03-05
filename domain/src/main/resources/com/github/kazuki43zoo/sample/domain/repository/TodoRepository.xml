@@ -33,7 +33,10 @@
     </select>
 
     <insert id="create" parameterType="Todo">
-        <bind name="todoId" value="@java.util.UUID@randomUUID().toString()"/>
+        <selectKey keyProperty="todoId" resultType="String" order="BEFORE">
+            <bind name="newTodoId" value="@java.util.UUID@randomUUID().toString()"/>
+            SELECT '${newTodoId}'
+        </selectKey>
         INSERT INTO todo
         (
             todo_id,
