@@ -285,19 +285,12 @@ $ sudo chkconfig --add boot-db
 
 ### How to use the PostgreSQL
 
+Create a PostgreSQL instance on Amazon RDS.
+About how to create a database, refer to http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.PostgreSQL.html.
+
 #### How to setup database objects and data
 
 It use the sql-maven-plugin.
-
-##### For localhost
-
-It execute the `sql:execute` command.
-
-```console
-mvn -f database/pom.xml sql:execute
-```
-
-##### For RDS of AWS
 
 Add server settings of PostgreSQL in `$HOME/.m2/settings.xml` as follow.
 
@@ -319,6 +312,8 @@ Add server settings of PostgreSQL in `$HOME/.m2/settings.xml` as follow.
 >
 > About how to encrypt a password, refer to https://maven.apache.org/guides/mini/guide-encryption.html.
 
+##### For RDS
+
 Execute the `sql:execute` command.
 
 ```console
@@ -328,6 +323,15 @@ mvn -f database/pom.xml sql:execute (-P aws) (-Ddb.url=jdbc:postgresql://{host}(
 > Note:
 >
 > Please change the property value of `db.url` in `database/pom.xml` or override property value using -D option(`-Ddb.url=jdbc:postgresql://{host}(:{port})/{databaseName}`).
+
+##### For localhost
+
+It execute the `sql:execute` command.
+
+```console
+mvn -f database/pom.xml sql:execute
+```
+
 
 
 #### How to modify connection pool settings
