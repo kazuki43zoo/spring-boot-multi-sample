@@ -142,6 +142,7 @@ $ fg
 ## Run on EC2 instance of AWS
 
 This sample application has been published using [EC2 instance of AWS ](http://ec2-52-69-78-174.ap-northeast-1.compute.amazonaws.com/).
+And database use a PostgreSQL on RDS instance of AWS.
 
 ### How to release to EC2 instance
 
@@ -281,6 +282,76 @@ e.g.)
 ```console
 $ sudo chkconfig --add boot-db
 ```
+
+### How to use the PostgreSQL
+
+#### How to setup database objects and data
+
+It use the sql-maven-plugin.
+
+##### For localhost
+
+It execute the `sql:execute` command.
+
+```console
+mvn -f database/pom.xml sql:execute
+```
+
+##### For RDS of AWS
+
+Add server settings of PostgreSQL in `$HOME/.m2/settings.xml` as follow.
+
+```
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <servers>
+        <server>
+            <id>postgresql</id>
+            <username>{username}</username>
+            <password>{password}</password>
+        </server>
+    </servers>
+</settings>
+```
+
+> Note:
+>
+> About how to encrypt a password, refer to https://maven.apache.org/guides/mini/guide-encryption.html.
+
+Execute the `sql:execute` command.
+
+```console
+mvn -f database/pom.xml sql:execute (-P aws) (-Ddb.url=jdbc:postgresql://{host}(:{port})/{databaseName})
+```
+
+> Note:
+>
+> Please change the property value of `db.url` in `database/pom.xml` or override property value using -D option(`-Ddb.url=jdbc:postgresql://{host}(:{port})/{databaseName}`).
+
+
+#### How to modify connection pool settings
+
+It create the `application-mybatis.yml` to override default settings on `${HOME}/apps/${VERSION}` as follow.
+
+```yml
+spring:
+  datasource:
+    tomcat:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://{host}(:{port})/{databaseName}
+      username: {username}
+      password: {password}
+```
+
+> Note:
+>
+> Spring has not been supported functionality to encrypt a password yet.
+>
+> * https://jira.spring.io/browse/SPR-10666
+> * https://github.com/spring-projects/spring-security/issues/3323
+> * https://github.com/spring-projects/spring-boot/issues/1312
+
 
 ## Apache Reverse Proxy Settings
 
