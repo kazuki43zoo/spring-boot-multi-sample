@@ -253,7 +253,7 @@ e.g)
 $ sudo ln -f -s ${HOME}/apps/1.0.0-SNAPSHOT/database.jar /etc/init.d/boot-db
 ```
 
-#### How to control a service manually
+#### How to control a service by manually
 
 It used the `service` command.
 
@@ -321,6 +321,7 @@ ProxyPassReverse /scr-j http://localhost:8083/scr-j
 >
 > `mod_proxy` and `mod_proxy_http` should be loaded.
 > 
+> e.g.)
 > ```conf
 > LoadModule proxy_module modules/mod_proxy.so
 > LoadModule proxy_http_module modules/mod_proxy_http.so
