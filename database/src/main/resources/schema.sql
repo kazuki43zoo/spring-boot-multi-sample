@@ -32,5 +32,5 @@ CREATE TABLE IF NOT EXISTS oauth_client_details (
   refresh_token_validity  INTEGER,
   additional_information  TEXT,
   autoapprove             TEXT,
-  CONSTRAINT pk_oauth_client_details PRIMARY KEY (client_id),
+  CONSTRAINT pk_oauth_client_details PRIMARY KEY (client_id)
 );

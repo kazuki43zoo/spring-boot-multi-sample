@@ -42,6 +42,7 @@ ls -l ${HOME}/apps/${VERSION}/*.*ar
 
 echo "[INFO] Release conf files to ${HOME}/apps/${VERSION}"
 cp service-conf/aws/*.conf ${HOME}/apps/${VERSION}/.
+ln -f -s ${HOME}/apps/application-mybatis.yml ${HOME}/apps/${VERSION}/application-mybatis.yml
 ls -l ${HOME}/apps/${VERSION}/*.conf
 
 echo "[INFO] Release static resource files to /var/www/html/"
@@ -68,19 +69,19 @@ sudo chkconfig --del boot-api-r
 sudo chkconfig --del boot-api-c
 
 echo "[INFO] Add auto-boot settings"
-sudo chkconfig --add boot-db
+#sudo chkconfig --add boot-db
 #sudo chkconfig --add boot-scr-t
 #sudo chkconfig --add boot-scr-f
-#sudo chkconfig --add boot-scr-j
+sudo chkconfig --add boot-scr-j
 sudo chkconfig --add boot-api-a
 sudo chkconfig --add boot-api-r
 sudo chkconfig --add boot-api-c
 
 echo "[INFO] Start services"
-sudo service boot-db start
+#sudo service boot-db start
 #sudo service boot-scr-t start
 #sudo service boot-scr-f start
-#sudo service boot-scr-j start
+sudo service boot-scr-j start
 sudo service boot-api-a start
 sudo service boot-api-r start
 sudo service boot-api-c start

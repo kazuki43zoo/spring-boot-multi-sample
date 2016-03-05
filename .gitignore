@@ -12,3 +12,5 @@ target
 
 # For Others
 .DS_Store
+
+/application*.yml

@@ -34,8 +34,45 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>sql-maven-plugin</artifactId>
+                <configuration>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>${db.url}</url>
+                    <settingsKey>postgresql</settingsKey>
+                    <encoding>UTF-8</encoding>
+                    <autocommit>false</autocommit>
+                    <delimiterType>normal</delimiterType>
+                    <fileset>
+                        <basedir>${project.basedir}/src/main/resources</basedir>
+                        <includes>
+                            <include>*.sql</include>
+                        </includes>
+                    </fileset>
+                    <orderFile>descending</orderFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <db.url>jdbc:postgresql://localhost/postgres</db.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>aws</id>
+            <properties>
+                <db.url>jdbc:postgresql://postgres.cbqvrssodtjf.ap-northeast-1.rds.amazonaws.com/postgres</db.url>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
 
