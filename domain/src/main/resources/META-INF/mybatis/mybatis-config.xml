@@ -17,8 +17,4 @@
         <package name="com.github.kazuki43zoo.sample.domain.repository"/>
     </typeAliases>
 
-    <typeHandlers>
-        <package name="com.github.kazuki43zoo.sample.infra.mybatis.typehandler"/>
-    </typeHandlers>
-
 </configuration>
