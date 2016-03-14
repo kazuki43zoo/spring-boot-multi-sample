@@ -11,7 +11,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mybatis-spring-boot.version>1.0.1-SNAPSHOT</mybatis-spring-boot.version>
+        <mybatis-spring-boot.version>1.0.1</mybatis-spring-boot.version>
         <mybatis-typehandlers-jsr310.version>1.0.0-SNAPSHOT</mybatis-typehandlers-jsr310.version>
         <mybatis.version>3.4.0-SNAPSHOT</mybatis.version>
         <mybatis-spring.version>1.3.0-SNAPSHOT</mybatis-spring.version>
