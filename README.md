@@ -48,7 +48,7 @@ $ java -jar api-resource/target/api-resource-1.0.0-SNAPSHOT.jar &
 $ java -jar api-client/target/api-client-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-thymeleaf/target/screen-thymeleaf-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-freemarker/target/screen-freemarker-1.0.0-SNAPSHOT.jar &
-$ java -jar screen-jsp/target/screen-jsp-1.0.0-SNAPSHOT.war &
+$ java -jar screen-jsp/target/screen-jsp-1.0.0-SNAPSHOT.jar &
 ```
 
 or run application as background process using `spring-boot:run` of `spring-boot-maven-plugin`.
@@ -208,7 +208,7 @@ total 168768
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-freemarker.conf
 -r-x------ 1 ec2-user ec2-user 22004742 Feb 27 17:03 screen-freemarker.jar
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-jsp.conf
--r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.war
+-r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.jsp
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-thymeleaf.conf
 -r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
 ```
@@ -238,7 +238,7 @@ lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-api-c -> /home/ec2-user/
 lrwxrwxrwx 1 root root 51 Feb 27 17:03 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
 lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
 lrwxrwxrwx 1 root root 56 Feb 27 17:03 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
-lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.war
+lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.jar
 lrwxrwxrwx 1 root root 55 Feb 27 17:03 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
 ```
 
