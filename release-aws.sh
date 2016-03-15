@@ -33,7 +33,7 @@ chmod u+w ${HOME}/apps/${VERSION}/*.*ar
 cp database/target/database-${VERSION}.jar ${HOME}/apps/${VERSION}/database.jar
 cp screen-thymeleaf/target/screen-thymeleaf-${VERSION}.jar ${HOME}/apps/${VERSION}/screen-thymeleaf.jar
 cp screen-freemarker/target/screen-freemarker-${VERSION}.jar ${HOME}/apps/${VERSION}/screen-freemarker.jar
-cp screen-jsp/target/screen-jsp-${VERSION}.war ${HOME}/apps/${VERSION}/screen-jsp.war
+cp screen-jsp/target/screen-jsp-${VERSION}.jar ${HOME}/apps/${VERSION}/screen-jsp.jar
 cp api-auth/target/api-auth-${VERSION}.jar ${HOME}/apps/${VERSION}/api-auth.jar
 cp api-resource/target/api-resource-${VERSION}.jar ${HOME}/apps/${VERSION}/api-resource.jar
 cp api-client/target/api-client-${VERSION}.jar ${HOME}/apps/${VERSION}/api-client.jar
@@ -53,7 +53,7 @@ echo "[INFO] Register services"
 sudo ln -f -s ${HOME}/apps/${VERSION}/database.jar /etc/init.d/boot-db
 sudo ln -f -s ${HOME}/apps/${VERSION}/screen-thymeleaf.jar /etc/init.d/boot-scr-t
 sudo ln -f -s ${HOME}/apps/${VERSION}/screen-freemarker.jar /etc/init.d/boot-scr-f
-sudo ln -f -s ${HOME}/apps/${VERSION}/screen-jsp.war /etc/init.d/boot-scr-j
+sudo ln -f -s ${HOME}/apps/${VERSION}/screen-jsp.jar /etc/init.d/boot-scr-j
 sudo ln -f -s ${HOME}/apps/${VERSION}/api-auth.jar /etc/init.d/boot-api-a
 sudo ln -f -s ${HOME}/apps/${VERSION}/api-resource.jar /etc/init.d/boot-api-r
 sudo ln -f -s ${HOME}/apps/${VERSION}/api-client.jar /etc/init.d/boot-api-c
