@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    tomcat:
-      driver-class-name: org.postgresql.Driver
-      url: jdbc:postgresql://postgres.cbqvrssodtjf.ap-northeast-1.rds.amazonaws.com/postgres
-      username: postgres
-      password: P0stgres
-
