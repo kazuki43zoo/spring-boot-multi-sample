@@ -87,7 +87,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <!-- see http://stackoverflow.com/questions/28560311/spring-boot-taglibs -->
+                <!-- see http://stackoverflow.com/questions/33281716/spring-boot-integration-test-maven-tests-missing-jstl -->
                 <configuration>
                     <useManifestOnlyJar>false</useManifestOnlyJar>
                 </configuration>
