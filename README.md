@@ -208,7 +208,7 @@ total 168768
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-freemarker.conf
 -r-x------ 1 ec2-user ec2-user 22004742 Feb 27 17:03 screen-freemarker.jar
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-jsp.conf
--r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.jsp
+-r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.jar
 -rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-thymeleaf.conf
 -r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
 ```
