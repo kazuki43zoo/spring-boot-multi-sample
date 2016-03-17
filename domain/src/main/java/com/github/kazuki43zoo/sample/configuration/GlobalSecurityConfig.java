@@ -29,15 +29,6 @@ public class GlobalSecurityConfig extends GlobalAuthenticationConfigurerAdapter 
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
-
-//        auth.inMemoryAuthentication()
-//                // System Administrators
-//                .withUser("admin").password("password").roles("ADMIN", "USER").and()
-//                // OAuth Resource Owners
-//                .withUser("user").password("password").roles("USER").and()
-//                .withUser("kazuki43zoo").password("password").roles("USER").and()
-//                // OAuth Clients
-//                .withUser("sample-client").password("password").roles("CLIENT").and();
-
     }
+
 }
