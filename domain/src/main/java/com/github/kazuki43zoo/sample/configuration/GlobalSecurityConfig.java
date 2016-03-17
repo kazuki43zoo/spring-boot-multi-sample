@@ -17,9 +17,6 @@ public class GlobalSecurityConfig extends GlobalAuthenticationConfigurerAdapter 
     @Autowired
     UserDetailsService userDetailsService;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
