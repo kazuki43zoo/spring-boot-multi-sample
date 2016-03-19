@@ -26,6 +26,7 @@ public class JmsConfig {
         factory.setConnectionFactory(connectionFactory);
         factory.setRecoveryInterval(1000L);
         factory.setMessageConverter(mappingJackson2MessageConverter());
+        factory.setSessionTransacted(true);
         return factory;
     }
 
