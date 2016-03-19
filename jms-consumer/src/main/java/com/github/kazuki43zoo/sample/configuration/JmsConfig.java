@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.connection.JmsTransactionManager;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 
 import javax.jms.ConnectionFactory;
@@ -26,8 +27,13 @@ public class JmsConfig {
         factory.setConnectionFactory(connectionFactory);
         factory.setRecoveryInterval(1000L);
         factory.setMessageConverter(mappingJackson2MessageConverter());
-        factory.setSessionTransacted(true);
+        factory.setTransactionManager(jmsTransactionManager(connectionFactory));
         return factory;
+    }
+
+    @Bean
+    JmsTransactionManager jmsTransactionManager(ConnectionFactory connectionFactory){
+        return new JmsTransactionManager(connectionFactory);
     }
 
     @Bean
