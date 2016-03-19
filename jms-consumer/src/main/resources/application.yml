@@ -1,0 +1,11 @@
+server:
+  port: 20000
+  context-path: /jms-c
+
+spring:
+  profiles:
+    include: mybatis
+
+logging:
+  level:
+    com.github.kazuki43zoo.sample: DEBUG

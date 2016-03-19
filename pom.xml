@@ -16,6 +16,7 @@
         <mybatis.version>3.4.0-SNAPSHOT</mybatis.version>
         <mybatis-spring.version>1.3.0-SNAPSHOT</mybatis-spring.version>
         <webjar.bootstrap.version>3.3.6</webjar.bootstrap.version>
+        <amazon-sqs-java-messaging-lib.version>1.0.0</amazon-sqs-java-messaging-lib.version>
     </properties>
 
     <parent>
@@ -51,6 +52,11 @@
                 <groupId>org.webjars</groupId>
                 <artifactId>bootstrap</artifactId>
                 <version>${webjar.bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>amazon-sqs-java-messaging-lib</artifactId>
+                <version>${amazon-sqs-java-messaging-lib.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.kazuki43zoo.spring.boot</groupId>
@@ -163,6 +169,7 @@
         <module>api-resource</module>
         <module>api-auth</module>
         <module>api-client</module>
+        <module>jms-consumer</module>
     </modules>
 
 </project>
