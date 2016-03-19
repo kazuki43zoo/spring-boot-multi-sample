@@ -49,6 +49,7 @@ $ java -jar api-client/target/api-client-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-thymeleaf/target/screen-thymeleaf-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-freemarker/target/screen-freemarker-1.0.0-SNAPSHOT.jar &
 $ java -jar screen-jsp/target/screen-jsp-1.0.0-SNAPSHOT.jar &
+$ java -jar jms-consumer/target/jms-consumer-1.0.0-SNAPSHOT.jar &
 ```
 
 or run application as background process using `spring-boot:run` of `spring-boot-maven-plugin`.
@@ -61,6 +62,7 @@ $ ./mvnw -f api-client/pom.xml spring-boot:run &
 $ ./mvnw -f screen-thymeleaf/pom.xml spring-boot:run &
 $ ./mvnw -f screen-freemarker/pom.xml spring-boot:run &
 $ ./mvnw -f screen-jsp/pom.xml spring-boot:run &
+$ ./mvnw -f jms-consumer/pom.xml spring-boot:run &
 ```
 
 ### Access to applications
@@ -97,6 +99,7 @@ $ fg
 | Screen AP Server           | screen-thymeleaf  | /scr-t | Screen Application using Thymeleaf as view technology<br>[http://localhost:8081/scr-t](http://localhost:8081/scr-t) | |
 |                            | screen-freemarker | /scr-f | Screen Application using FreeMarker as view technology<br>[http://localhost:8082/scr-f](http://localhost:8082/scr-f) | |
 |                            | screen-jsp        | /scr-j | Screen Application using JSP as view technology<br>[http://localhost:8083/scr-j](http://localhost:8083/scr-j) | |
+| JMS Consumer Server        | jms-consumer      | /jms-c | JMS Consumer Application<br>[http://localhost:20000/jms-c](http://localhost:20000/jms-c) | |
 | H2 Database<br>Web Console | database          | /db    | Console Application of H2 Database<br>[http://localhost:10000/db](http://localhost:10000/db) | |
 | Domain<br>Components       | domain            | -      | Domain components (`@Service`, `@Repository`, Domain Objects, etc ...) | |
 | Common<br>Components       | component         | -      | Common components | |

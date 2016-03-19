@@ -39,7 +39,7 @@ cp screen-jsp/target/screen-jsp-${VERSION}.jar ${HOME}/apps/${VERSION}/screen-js
 cp api-auth/target/api-auth-${VERSION}.jar ${HOME}/apps/${VERSION}/api-auth.jar
 cp api-resource/target/api-resource-${VERSION}.jar ${HOME}/apps/${VERSION}/api-resource.jar
 cp api-client/target/api-client-${VERSION}.jar ${HOME}/apps/${VERSION}/api-client.jar
-cp jms-consumer/target/jms-consumer-${VERSION}.jar ${HOME}/apps/${VERSION}/jms-c.jar
+cp jms-consumer/target/jms-consumer-${VERSION}.jar ${HOME}/apps/${VERSION}/jms-consumer.jar
 chmod 500 ${HOME}/apps/${VERSION}/*.*ar
 ls -l ${HOME}/apps/${VERSION}/*.*ar
 
