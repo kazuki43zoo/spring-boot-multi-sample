@@ -199,21 +199,25 @@ e.g.)
 
 ```console
 $ ls -l ${HOME}/apps/1.0.0-SNAPSHOT
-total 168768
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-auth.conf
--r-x------ 1 ec2-user ec2-user 31405282 Feb 27 17:03 api-auth.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-client.conf
--r-x------ 1 ec2-user ec2-user 28951476 Feb 27 17:03 api-client.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 api-resource.conf
--r-x------ 1 ec2-user ec2-user 23847338 Feb 27 17:03 api-resource.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 database.conf
--r-x------ 1 ec2-user ec2-user 15647598 Feb 27 17:03 database.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-freemarker.conf
--r-x------ 1 ec2-user ec2-user 22004742 Feb 27 17:03 screen-freemarker.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-jsp.conf
--r-x------ 1 ec2-user ec2-user 23785134 Feb 27 17:03 screen-jsp.jar
--rw-rw-r-- 1 ec2-user ec2-user       19 Feb 27 17:03 screen-thymeleaf.conf
--r-x------ 1 ec2-user ec2-user 27123851 Feb 27 17:03 screen-thymeleaf.jar
+total 252360
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 api-auth.conf
+-r-x------ 1 ec2-user ec2-user 33754311 Mar 19 19:32 api-auth.jar
+-rw-rw-r-- 1 ec2-user ec2-user       50 Mar 19 19:32 api-client.conf
+-r-x------ 1 ec2-user ec2-user 29867095 Mar 19 19:32 api-client.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 api-resource.conf
+-r-x------ 1 ec2-user ec2-user 26201264 Mar 19 19:32 api-resource.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 database.conf
+-r-x------ 1 ec2-user ec2-user 15860195 Mar 19 19:32 database.jar
+-r-x------ 1 ec2-user ec2-user 26178217 Mar 19 17:17 jms-c.jar
+-rw-rw-r-- 1 ec2-user ec2-user       50 Mar 19 19:32 jms-consumer.conf
+-r-x------ 1 ec2-user ec2-user 26178259 Mar 19 19:32 jms-consumer.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 screen-freemarker.conf
+-r-x------ 1 ec2-user ec2-user 22925315 Mar 19 19:32 screen-freemarker.jar
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 screen-jsp.conf
+-r-x------ 1 ec2-user ec2-user 24695018 Mar 19 19:32 screen-jsp.jar
+-r-x------ 1 ec2-user ec2-user 24664784 Mar 14 14:45 screen-jsp.war
+-rw-rw-r-- 1 ec2-user ec2-user       19 Mar 19 19:32 screen-thymeleaf.conf
+-r-x------ 1 ec2-user ec2-user 28034296 Mar 19 19:32 screen-thymeleaf.jar
 ```
 
 ##### Set VM options into JAVA_OPTS
@@ -230,19 +234,26 @@ In this application, override the active profile for AWS at `api-client.conf`.
 JAVA_OPTS="-Xmx128M -Dspring.profiles.active=aws"
 ```
 
+In this application, override the active profile for AWS at `jms-consumer.conf`.
+
+```bash
+JAVA_OPTS="-Xmx128M -Dspring.profiles.active=sqs"
+```
+
 #### How to register a service
  
 It used the `init.d`.
 
 ```console
 $ ls -l /etc/init.d/boot*
-lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
-lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
-lrwxrwxrwx 1 root root 51 Feb 27 17:03 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
-lrwxrwxrwx 1 root root 47 Feb 27 17:03 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
-lrwxrwxrwx 1 root root 56 Feb 27 17:03 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
-lrwxrwxrwx 1 root root 49 Feb 27 17:03 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.jar
-lrwxrwxrwx 1 root root 55 Feb 27 17:03 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
+lrwxrwxrwx 1 root root 47 Mar 19 19:32 /etc/init.d/boot-api-a -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-auth.jar
+lrwxrwxrwx 1 root root 49 Mar 19 19:32 /etc/init.d/boot-api-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-client.jar
+lrwxrwxrwx 1 root root 51 Mar 19 19:32 /etc/init.d/boot-api-r -> /home/ec2-user/apps/1.0.0-SNAPSHOT/api-resource.jar
+lrwxrwxrwx 1 root root 47 Mar 19 19:32 /etc/init.d/boot-db -> /home/ec2-user/apps/1.0.0-SNAPSHOT/database.jar
+lrwxrwxrwx 1 root root 51 Mar 19 19:32 /etc/init.d/boot-jms-c -> /home/ec2-user/apps/1.0.0-SNAPSHOT/jms-consumer.jar
+lrwxrwxrwx 1 root root 56 Mar 19 19:32 /etc/init.d/boot-scr-f -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-freemarker.jar
+lrwxrwxrwx 1 root root 49 Mar 19 19:32 /etc/init.d/boot-scr-j -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-jsp.jar
+lrwxrwxrwx 1 root root 55 Mar 19 19:32 /etc/init.d/boot-scr-t -> /home/ec2-user/apps/1.0.0-SNAPSHOT/screen-thymeleaf.jar
 ```
 
 Register a service using following command. A fully executable jar include [a startup script](#spring-boot-startup-script-in-fully-executable-jar).
@@ -336,7 +347,6 @@ mvn -f database/pom.xml sql:execute
 ```
 
 
-
 #### How to modify connection pool settings
 
 It create the `application-mybatis.yml` to override default settings on `${HOME}/apps/${VERSION}` as follow.
@@ -359,6 +369,17 @@ spring:
 > * https://github.com/spring-projects/spring-security/issues/3323
 > * https://github.com/spring-projects/spring-boot/issues/1312
 
+
+#### How to specify a credentials of Amazon SQS
+
+It create the `SqsCredentials.properties` on `${HOME}/apps/${VERSION}` as follow.
+
+```yml
+accessKey=xxxxxx
+secretKey=yyyyyy
+```
+
+About access key and secret key, refer to http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html#AccessKeys.
 
 ## Apache Reverse Proxy Settings
 
@@ -393,6 +414,9 @@ ProxyPassReverse /scr-f http://localhost:8082/scr-f
 
 ProxyPass /scr-j http://localhost:8083/scr-j
 ProxyPassReverse /scr-j http://localhost:8083/scr-j
+
+ProxyPass /jms-c http://localhost:20000/jms-j
+ProxyPassReverse /jms-c http://localhost:20000/jms-c
 ```
 
 > Note: **Preconditions**

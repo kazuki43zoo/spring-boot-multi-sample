@@ -19,6 +19,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.jms.ConnectionFactory;
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,7 +56,11 @@ public class TodosApiTests {
         TodoResource resource = new TodoResource();
         resource.setTodoTitle("Todoアプリの開発");
 
-        operations.convertAndSend("todo", resource);
+        Map<String, Object> headers = new HashMap<>();
+        headers.put("username", "kazuki43zoo");
+        headers.put("trackingId", UUID.randomUUID().toString());
+
+        operations.convertAndSend("todo", resource, headers);
 
         TimeUnit.SECONDS.sleep(2);
 
