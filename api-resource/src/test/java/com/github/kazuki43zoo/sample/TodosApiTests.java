@@ -6,8 +6,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.web.WebIntegrationTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
@@ -37,7 +37,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {ApiResourceApplication.class})
+@SpringApplicationConfiguration(classes = {ApiResourceApplication.class, TodosApiTests.LocalContext.class})
 @WebIntegrationTest(randomPort = true)
 public class TodosApiTests {
 
@@ -52,7 +52,7 @@ public class TodosApiTests {
         @Bean
         RestTemplate clientRestTemplate() {
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.setInterceptors(Arrays.asList((request, body, execution) -> {
+            restTemplate.setInterceptors(Collections.singletonList((request, body, execution) -> {
                 request.getHeaders().set(HttpHeaders.AUTHORIZATION, "Bearer dummyAccessToken");
                 return execution.execute(request, body);
             }));
@@ -64,15 +64,13 @@ public class TodosApiTests {
             Map<String, String> requestParameters = new HashMap<>();
             String clientId = "sample-client";
             Collection<? extends GrantedAuthority> authorities = Collections.emptyList();
-            boolean approved = true;
             Set<String> scope = new LinkedHashSet<>(Arrays.asList("read", "write"));
-            Set<String> resourceIds = new LinkedHashSet<>(Arrays.asList("oauth2-resource"));
-            String redirectUri = "";
+            Set<String> resourceIds = new LinkedHashSet<>(Collections.singletonList("oauth2-resource"));
             Set<String> responseTypes = new LinkedHashSet<>();
             Map<String, Serializable> extensionProperties = new HashMap<>();
 
             OAuth2Authentication authentication = new OAuth2Authentication(
-                    new OAuth2Request(requestParameters, clientId, authorities, approved, scope, resourceIds, redirectUri, responseTypes, extensionProperties),
+                    new OAuth2Request(requestParameters, clientId, authorities, true, scope, resourceIds, "", responseTypes, extensionProperties),
                     new TestingAuthenticationToken("kazuki43zoo", "", "ROLE_USER"));
 
             ResourceServerTokenServices resourceServerTokenServices = Mockito.mock(ResourceServerTokenServices.class);
