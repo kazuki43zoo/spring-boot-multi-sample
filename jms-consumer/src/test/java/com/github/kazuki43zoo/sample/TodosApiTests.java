@@ -4,8 +4,7 @@ import com.github.kazuki43zoo.sample.api.controller.todo.TodoResource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringApplicationConfiguration;
-import org.springframework.boot.test.context.web.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -25,8 +24,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {JmsConsumerApplication.class, TodosApiTests.LocalContext.class})
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes = {JmsConsumerApplication.class, TodosApiTests.LocalContext.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TodosApiTests {
 
     @Configuration

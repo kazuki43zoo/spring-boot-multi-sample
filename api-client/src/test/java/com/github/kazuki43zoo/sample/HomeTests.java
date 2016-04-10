@@ -6,8 +6,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringApplicationConfiguration;
-import org.springframework.boot.test.context.web.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
@@ -17,8 +16,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = ApiClientApplication.class)
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes = ApiClientApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HomeTests {
 
     @Value("http://localhost:${local.server.port}${server.context-path:}")

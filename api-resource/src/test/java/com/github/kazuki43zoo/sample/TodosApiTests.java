@@ -6,8 +6,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringApplicationConfiguration;
-import org.springframework.boot.test.context.web.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ParameterizedTypeReference;
@@ -37,8 +36,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = {ApiResourceApplication.class, TodosApiTests.LocalContext.class})
-@WebIntegrationTest(randomPort = true)
+@SpringBootTest(classes = {ApiResourceApplication.class, TodosApiTests.LocalContext.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TodosApiTests {
 
     @Configuration
