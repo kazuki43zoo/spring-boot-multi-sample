@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
@@ -30,14 +27,14 @@ public class TodoController {
         return new TodoForm();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String list(Model model, Principal principal) {
         List<Todo> todos = todoService.findAllByUsername(extractUsername(principal));
         model.addAttribute("todos", todos);
         return "todo/list";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public String create(@Validated TodoForm todoForm, BindingResult bindingResult, Model model,
                          Principal principal, @TrackingId String trackingId) {
         if (bindingResult.hasErrors()) {
@@ -50,20 +47,20 @@ public class TodoController {
         return "redirect:/todos";
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.GET)
+    @GetMapping("{todoId}")
     public String get(@PathVariable String todoId, Model model) {
         Todo todo = todoService.findOne(todoId);
         model.addAttribute(todo);
         return "todo/detail";
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.POST, params = "finish")
+    @PostMapping(path = "{todoId}", params = "finish")
     public String finish(@PathVariable String todoId) {
         todoService.finish(todoId);
         return "redirect:/todos";
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.POST, params = "delete")
+    @PostMapping(path = "{todoId}", params = "delete")
     public String delete(@PathVariable String todoId) {
         todoService.delete(todoId);
         return "redirect:/todos";

@@ -15,6 +15,7 @@ import org.springframework.jms.support.SimpleJmsHeaderMapper;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessagingMessageConverter;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.jms.ConnectionFactory;
 import javax.sql.DataSource;
@@ -23,8 +24,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {JmsConsumerApplication.class, TodosApiTests.LocalContext.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {JmsConsumerApplication.class, TodosApiTests.LocalContext.class})
 public class TodosApiTests {
 
     @Configuration

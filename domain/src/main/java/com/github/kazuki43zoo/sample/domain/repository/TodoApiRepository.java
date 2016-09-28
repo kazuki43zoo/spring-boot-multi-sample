@@ -3,6 +3,7 @@ package com.github.kazuki43zoo.sample.domain.repository;
 import com.github.kazuki43zoo.sample.domain.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
@@ -29,8 +30,11 @@ public class TodoApiRepository implements TodoRepository {
     @Value("${api.baseUrl:http://localhost:9081/api-r}/todos/{todoId}")
     String todoResourceUrl;
 
-    @Autowired
-    RestOperations restOperations;
+    private final RestOperations restOperations;
+
+    public TodoApiRepository (RestTemplateBuilder builder) {
+        this.restOperations = builder.build();
+    }
 
     @PostAuthorize("permitAll()") // Override access policy on interface method
     @Override

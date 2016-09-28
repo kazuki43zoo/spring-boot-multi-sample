@@ -3,10 +3,16 @@ logging:
     org.mybatis: DEBUG
 
 mybatis:
-  config: classpath:META-INF/mybatis/mybatis-config.xml
+  type-aliases-package: com.github.kazuki43zoo.sample.domain.model, com.github.kazuki43zoo.sample.domain.repository
+  configuration:
+    map-underscore-to-camel-case: true
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+    default-fetch-size: 100
 
 spring:
   datasource:
+#    driver-class-name: org.h2.Driver
     tomcat:
       url: jdbc:h2:tcp://localhost:10001/~/db/spring-boot-multi-sample;LOCK_TIMEOUT=10000;
       username: sa

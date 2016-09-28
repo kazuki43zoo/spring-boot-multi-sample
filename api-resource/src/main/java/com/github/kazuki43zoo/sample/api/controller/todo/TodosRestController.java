@@ -26,7 +26,7 @@ public class TodosRestController {
     @Autowired
     TodoService todoService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<TodoResource> search(Principal principal) {
         return todoService.findAllByUsername(principal.getName())
                 .stream().map(todo -> {
@@ -37,7 +37,7 @@ public class TodosRestController {
                 .collect(Collectors.toList());
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public ResponseEntity<Void> create(
             @Validated @RequestBody TodoResource newResource,
             UriComponentsBuilder uriBuilder,
@@ -52,14 +52,14 @@ public class TodosRestController {
         return ResponseEntity.created(resourceUri).build();
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteBooks(Principal principal) {
+    public void deleteAll(Principal principal) {
         todoService.findAllByUsername(principal.getName())
                 .forEach(todo -> todoService.delete(todo.getTodoId()));
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.GET)
+    @GetMapping("{todoId}")
     public TodoResource get(@PathVariable String todoId) {
         Todo todo = todoService.findOne(todoId);
         TodoResource resource = new TodoResource();
@@ -67,7 +67,7 @@ public class TodosRestController {
         return resource;
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.PUT)
+    @PutMapping("{todoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void put(@PathVariable String todoId,
                     @Validated @RequestBody TodoResource resource) {
@@ -76,7 +76,7 @@ public class TodosRestController {
         todoService.update(todoId, updatingTodo);
     }
 
-    @RequestMapping(path = "{todoId}", method = RequestMethod.DELETE)
+    @DeleteMapping("{todoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable String todoId) {
         todoService.delete(todoId);
