@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 language: java
 jdk:
   - oraclejdk8
@@ -10,4 +10,4 @@ cache:
 install: true
 
 script:
-  - mvn -U install -P executable
+  - ./mvnw -U install -P executable
